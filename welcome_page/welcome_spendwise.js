@@ -1,9 +1,10 @@
 const btn = document.getElementById('btn');
 const container = document.querySelector('.welcome-section');
 
+//Kiểm tra nếu trình duyệt hỗ trợ View Transition
 btn.addEventListener('click', function(e) {
     e.preventDefault();
-    var targetURL = "dangnhap.html";
+    var targetURL = "/dangnhap_dangky/dangky.html";
      if (!document.startViewTransition){
         window.location.href = targetURL;
         return;
