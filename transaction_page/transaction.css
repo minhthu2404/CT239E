@@ -12,12 +12,18 @@ div.transaction{
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin: 4rem;
+    margin: 2rem 4rem 4rem 4rem;
     padding: 3rem;
 }
 div.transaction-header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.title{
+    color: #6e6ee1;
+    font-family: Montserrat;
+    font-size: 35px;
 }
 div.tool{
     display: flex;
@@ -27,8 +33,21 @@ div.sort{
     display: flex;
 }
 button.add-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #6e6ee1;
     font-family: Inter;
     color: #f0f0fc;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
     cursor: pointer;
+}
+.add-btn>p{
+    margin-left: 10px ;
 }
