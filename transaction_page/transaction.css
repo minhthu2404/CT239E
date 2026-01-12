@@ -1,38 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Goldman:wght@400;700&family=Indie+Flower&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
 
 body {
-    background-color: #f0f0fc;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     font-size: 18px;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
 }
 
-div.transaction{
+.transaction{
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin: 2rem 4rem 4rem 4rem;
+    margin: 2rem 5rem ;
     padding: 3rem;
 }
-div.transaction-header{
+
+.transaction-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.title{
+.transaction-header h1{
     color: #6e6ee1;
     font-family: Montserrat;
-    font-size: 35px;
+    font-size: 60px;
+    padding-left: 10px;
+    border-left: 5px solid #151565;
+    text-shadow: -5px 1px 0 #151565;
 }
-div.tool{
-    display: flex;
-    justify-content: space-between;
-}
-div.sort{
-    display: flex;
-}
-button.add-btn{
+.add-btn{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +44,160 @@ button.add-btn{
     font-weight: bold;
     border: none;
     cursor: pointer;
+    box-shadow: 5px 5px 0 0 #151565;
+    text-decoration: none;
 }
-.add-btn>p{
+.add-text{
     margin-left: 10px ;
+    white-space: nowrap;
+}
+.add-btn:hover{
+    background-color: #6565cd;
+    box-shadow: inset 5px 5px 0 0 #151565;
+}
+
+.tool{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box{
+    position: relative;
+    width: 300px; 
+}
+.search-icon{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.search-input{
+    width:100% ;
+    height: 45px ;
+    padding-left: 45px;
+    border-radius: 15px;
+    border: 1px solid #151565;
+    font-size: 18px;
+}
+.search-input:hover{
+    box-shadow: 3px 3px 6px #151565;
+}
+.search-input:focus{
+    outline: none;
+    box-shadow:
+        inset 0 2px 4px #0000001a, 
+        3px 3px 6px #151565;
+    background-color: #f4f4ff;
+}
+#sort-opt {
+    height: 45px;
+    padding: 0 15px;
+    border-radius: 15px;
+    border: 2px solid #151565;
+    background-color: #f4f4ff;
+    color: #151565;
+    font-size: 16px;
+    cursor: pointer;
+}
+#sort-opt:hover {
+    box-shadow:
+        inset 0 2px 4px #0000001a;
+}
+#sort-opt option {
+    background-color: white;
+    color: #151565;
+}
+.history {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+
+
+
+/*add_transaction*/
+.bd-add_transaction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 5rem;
+    padding: 3rem;
+    gap: 2rem;
+    width: 700px;
+    height: max-content;
+    align-items: center;
+    background-color: #f4f4ff;
+    border-radius: 15px;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+.type-opt{
+    display: flex;
+    width: 65%;
+}
+.type-opt label{
+    flex: 1;
+}
+.money{
+    width: 70%;
+}
+.money .input-group input{
+    height: 50px;
+}
+.choose{
+    display: flex;
+    width: 70%;
+    gap: 4rem;
+}
+.note{
+    width: 70%;
+}
+.note input{
+    height: 45px;
+}
+.bttn{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    height: 50px;
+    gap: 5px;
+}
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #6565cd;
+    font-family: Inter;
+    color: #f0f0fc;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 5px 5px 0 0 #151565;
+    text-decoration: none;
+}
+button:hover{
+    box-shadow: inset 5px 5px 0 0 #151565;
+}
+.bttn button:first-child{
+    background:rgb(233, 33, 33);
 }

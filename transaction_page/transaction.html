@@ -5,38 +5,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Giao dịch</title>
         <link rel="stylesheet" href="transaction.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     </head>
     <body>
         <div class="transaction">
+
             <div class="transaction-header">
-                <div class="title">
-                    <h1>GIAO DỊCH</h1>
-                </div>
-                <div class="add">
-                    <button class="add-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 5v14M5 12h14"
-                                stroke="white"
-                                stroke-width="7"
-                                stroke-linecap="round"/>
-                        </svg>
-                        <p>Thêm giao dịch</p>
-                    </button>
-                </div>
+                <h1>GIAO DỊCH</h1>
+                <a href="add_transaction.html" class="add-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M12 5v14M5 12h14"
+                            stroke="white"
+                            stroke-width="7"
+                            stroke-linecap="round"/>
+                    </svg>
+                    <span class="add-text">Thêm giao dịch</span>
+                </a>
             </div>
+            
             <div class="tool">
-                <div class="search">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     <input class="search-input" type="text" placeholder="Tìm kiếm giao dịch" >
                 </div>
-                <div class="sort">
-                    <select id="sort-opt">
-                        <option value="date">Gần đây nhất</option>
-                        <option value="amount">Số tiền lớn nhất</option>
-                    </select>
-                </div>
+                <select id="sort-opt">
+                    <option value="date">Gần đây nhất</option>
+                    <option value="amount">Số tiền lớn nhất</option>
+                </select>
             </div>
             <div class="history">
-                <p>Không tìm thấy giao dịch nào</p>
+                Không có giao dịch nào
+            </div>
+
             </div>
         </div>
     </body>
