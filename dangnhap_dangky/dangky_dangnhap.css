@@ -1,0 +1,74 @@
+body {
+  background-color: #f0f0fc;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: Inter;
+}
+
+.tabs-list {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-item {
+  padding: 12px 24px;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+  border: 1px solid transparent; /* Tránh bị nhảy khung khi thêm border */
+  border-bottom: none;
+  transition: all 0.2s ease;
+}
+
+/* Hiệu ứng khi di chuột qua */
+.tab-item:hover {
+  color: #000;
+}
+
+/* Style cho Tab đang được chọn (Active) */
+.tab-item.active {
+  background-color: #fff;
+  border: 1px solid #ddd; /* Hiện khung 3 cạnh */
+  border-bottom: 1px solid #fff; /* Border dưới màu trắng để đè lên đường kẻ chung */
+  margin-bottom: -1px; /* Đẩy xuống 1px để che đường kẻ của .tabs-list */
+  border-radius: 4px 4px 0 0; /* Bo góc nhẹ phía trên */
+  font-weight: 500;
+}
+
+/* Ẩn tất cả các panel mặc định */
+.tab-panel {
+  display: none;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-top: none; /* Liền mạch với border của tab list */
+  min-height: 150px;
+}
+
+/* Chỉ hiển thị panel có class active */
+.tab-panel.active {
+  display: block;
+}
+
+/* Thêm hiệu ứng View Transition cho toàn bộ vùng nội dung */
+.content-wrapper {
+  view-transition-name: tab-content;
+}
+
+/* Định nghĩa hiệu ứng trượt cho vùng nội dung */
+::view-transition-old(tab-content) {
+  animation: 0.3s ease-in-out both slide-out;
+}
+::view-transition-new(tab-content) {
+  animation: 0.3s ease-in-out both slide-in;
+}
+
+@keyframes slide-out {
+  to { opacity: 0; transform: translateX(-20px); }
+}
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(20px); }
+}

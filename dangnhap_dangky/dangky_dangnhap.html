@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise</title>
+    <link rel="stylesheet" href="../dangnhap_dangky/dangky_dangnhap.css">
+</head>
+<body>
+    <div class="dangky_dangnhap">
+        <div class="tabs-wrapper">
+            <ul class="tabs-list">
+                <!--data-target có ý nghĩa là khi nhấn vào nút này, tôi muốn tác
+                động đến thẻ có id này.-->
+                <li class="tab-item active" data-target="dangnhap">Đăng Nhập</li>
+                <li class="tab-item" data-target="dangky">Đăng Ký</li>
+            </ul>
+        </div>
+
+        <div class="content-wrapper">
+            <div id="dangnhap" class="tab-panel active">
+                <h3>Details Content</h3>
+                <p>Đây là thông tin chi tiết về sản phẩm SpendWise.</p>
+            </div>
+            <div id="dangky" class="tab-panel">
+                <h3>User Reviews</h3>
+                <p>Đánh giá từ người dùng: 5 sao cho sự tiện lợi!</p>
+            </div>
+        </div>
+    </div>
+    <script src="../dangnhap_dangky/dangky_dangnhap.js"></script>
+</body>
+</html>

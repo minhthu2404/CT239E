@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,35 +8,99 @@
     <link rel="stylesheet" href="welcome_spendwise.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
-<body id="page">
-    <div class="welcome-section">
-        <div class="welcome-text">
-            <h1>Chào mừng đến với SpendWise</h1>
-            <p>Giải pháp quản lý chi tiêu thông minh, giúp bạn làm chủ 
-                tài chính cá nhân một cách dễ dàng và hiệu quả.</p>
-            <button id="btn">Bắt đầu ngay! 
-                <div class="arrow">
-                    <svg
-                    height="24"
-                    width="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    >
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                        d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                        fill="currentColor"
-                    ></path>
-                    </svg>
-                </div>
-            </button>
-        </div>
 
-        <div class="welcome-img">
-            <img src="./images/welcome_pic.png" alt="welcome_pic">
+<body>
+    <div class="main-frame">
+        <div class="container">
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h1>Chào mừng đến với SpendWise</h1>
+                    <p>Giải pháp quản lý chi tiêu thông minh, giúp bạn làm chủ
+                        tài chính cá nhân một cách dễ dàng và hiệu quả.</p>
+                    <button id="btn">Bắt đầu ngay!
+                        <div class="arrow">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="welcome-img">
+                    <img src="./images/welcome_pic.png" alt="welcome_pic">
+                </div>
+            </div>
+
+            <!--Login/Register-->
+            <section class="login-card" id="login-view">
+                <div class="forms-wrapper">
+                    <!-- Sign In Form -->
+                    <div class="form-container sign-in-container">
+                        <form class="auth-form">
+                            <h2>Đăng nhập</h2>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mật khẩu</label>
+                                <input type="password" id="password" placeholder="••••••••">
+                            </div>
+                            <button type="submit" class="btn-primary btn-full">Đăng nhập</button>
+                            <p class="auth-footer">Chưa có tài khoản? <a href="#" id="sign-up-btn">Đăng ký ngay</a></p>
+                        </form>
+                    </div>
+
+                    <!-- Sign Up Form -->
+                    <div class="form-container sign-up-container">
+                        <form class="auth-form">
+                            <h2>Đăng ký</h2>
+                            <div class="form-group">
+                                <label for="new-name">Họ và tên</label>
+                                <input type="text" id="new-name" placeholder="Nguyễn Văn A">
+                            </div>
+                            <div class="form-group">
+                                <label for="new-email">Email</label>
+                                <input type="email" id="new-email" placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">Mật khẩu</label>
+                                <input type="password" id="new-password" placeholder="••••••••">
+                            </div>
+                            <button type="submit" class="btn-primary btn-full">Đăng ký</button>
+                            <p class="auth-footer">Đã có tài khoản? <a href="#" id="sign-in-btn">Đăng nhập</a></p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Overlay Container (Image) -->
+                <div class="overlay-container">
+                    <button id="back-btn" class="btn-back">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        Quay lại
+                    </button>
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <img src="./images/welcome_pic_1.png" alt="Minh họa tài chính">
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <img src="./images/welcome_pic_2.png" alt="Minh họa tài chính">
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
     <script src="./welcome_spendwise.js"></script>
 </body>
+
 </html>
