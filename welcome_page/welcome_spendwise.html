@@ -40,35 +40,52 @@
                     <!-- Sign In Form -->
                     <div class="form-container sign-in-container">
                         <form class="auth-form">
-                            <h2>Đăng nhập</h2>
+                            <h2>ĐĂNG NHẬP</h2>
                             <div class="form-group">
+
+                                <input type="email" id="email" placeholder=" ">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" placeholder="name@example.com">
                             </div>
                             <div class="form-group">
+
+                                <input type="password" id="password" placeholder=" ">
                                 <label for="password">Mật khẩu</label>
-                                <input type="password" id="password" placeholder="••••••••">
                             </div>
                             <button type="submit" class="btn-primary btn-full">Đăng nhập</button>
-                            <p class="auth-footer">Chưa có tài khoản? <a href="#" id="sign-up-btn">Đăng ký ngay</a></p>
+                            <p class="auth-footer">Chưa có tài khoản? <a href="#" id="sign-up-btn">Đăng ký</a></p>
                         </form>
                     </div>
 
                     <!-- Sign Up Form -->
                     <div class="form-container sign-up-container">
                         <form class="auth-form">
-                            <h2>Đăng ký</h2>
+                            <h2>ĐĂNG KÝ</h2>
                             <div class="form-group">
+
+                                <input type="text" id="new-name" placeholder=" ">
                                 <label for="new-name">Họ và tên</label>
-                                <input type="text" id="new-name" placeholder="Nguyễn Văn A">
                             </div>
                             <div class="form-group">
+
+                                <input type="email" id="new-email" placeholder=" ">
                                 <label for="new-email">Email</label>
-                                <input type="email" id="new-email" placeholder="name@example.com">
                             </div>
                             <div class="form-group">
+
+                                <input type="password" id="new-password" placeholder=" ">
                                 <label for="new-password">Mật khẩu</label>
-                                <input type="password" id="new-password" placeholder="••••••••">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="confirm-password" placeholder=" ">
+                                <label for="confirm-password">Xác nhận mật khẩu</label>
+                            </div>
+                            <div class="other-field">
+                                <input type="date" id="datetime">
+                                <select id="gender">
+                                    <option value="male">Nam</option>
+                                    <option value="female">Nữ</option>
+                                    <option value="other">Khác</option>
+                                </select>
                             </div>
                             <button type="submit" class="btn-primary btn-full">Đăng ký</button>
                             <p class="auth-footer">Đã có tài khoản? <a href="#" id="sign-in-btn">Đăng nhập</a></p>
@@ -85,7 +102,7 @@
                             <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                        Quay lại
+
                     </button>
                     <div class="overlay">
                         <div class="overlay-panel overlay-left">
