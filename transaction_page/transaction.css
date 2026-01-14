@@ -21,7 +21,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.transaction-header h1{
+.transaction-header .title{
     color: #6e6ee1;
     font-family: Montserrat;
     font-size: 60px;
@@ -121,54 +121,140 @@ body {
 
 
 /*add_transaction*/
-.bd-add_transaction{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.hidden{
+    display: none;
 }
-form{
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+#formPopup {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    width: 600px;
+    border-radius: 8px;
+    z-index: 11;
+}
+#transactionForm{
     display: flex;
     flex-direction: column;
-    margin: 5rem;
-    padding: 3rem;
-    gap: 2rem;
-    width: 700px;
-    height: max-content;
+    justify-content: center;
+    width: 100%;
     align-items: center;
-    background-color: #f4f4ff;
-    border-radius: 15px;
+    gap: 1rem;
+    padding-bottom: 25px;
+}
+.add-title{
+    color: #4e4eb9;
+    font-family: Montserrat;
+    font-size: 36px;
+    padding-left: 10px;
+    text-shadow: 1px 1px 0 #151565;
 }
 .input-group{
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+.input-group input{
+    font-size: 18px;
+    height: 45px;
+    padding: 5px 15px;
+    border: 0.5px solid #151565;
+    border-radius: 5px;
 }
 label{
     margin-bottom: 6px;
     font-size: 18px;
 }
-.type-opt{
+.type-opt {
     display: flex;
-    width: 65%;
+    width: 70%;
+    padding: 0;
+    height: 60px;
+    border: 0.5px solid #151565;
+    border-radius: 10px;
+    gap: 5px;
 }
-.type-opt label{
+.type-opt input[type="radio"] {
+    display: none;
+}
+.type-opt label {
     flex: 1;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    font-family: Inter;
+    color: #000000;
+    width: 200px;
+    height: 60px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+#thu:checked + label {
+    background-color: #47ba40;
+    font-family: Inter;
+    color: #ffffff;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 5px 0px 2px 0px #274d26;
+}
+#chi:checked + label {
+    background: #eb3c25;
+    font-family: Inter;
+    color: #ffffff;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: -5px 0px 2px 0px #7b2216;
+}
+.type-opt input:not(:checked) + label:hover{
+    background-color:#d2d1d1;
+    opacity: 0.8;
+    border-radius: 10px;
 }
 .money{
     width: 70%;
-}
-.money .input-group input{
-    height: 50px;
 }
 .choose{
     display: flex;
     width: 70%;
     gap: 4rem;
+    height: 80px;
+    justify-content: space-between;
+}
+.date{
+    width: 40%;
+}
+.category{
+    width: 40%;
+}
+#opt-category{
+    height: 45px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 0.5px solid #151565;
+    border-radius: 5px;
 }
 .note{
     width: 70%;
-}
-.note input{
-    height: 45px;
 }
 .bttn{
     display: flex;
@@ -192,12 +278,17 @@ button{
     font-weight: bold;
     border: none;
     cursor: pointer;
-    box-shadow: 5px 5px 0 0 #151565;
     text-decoration: none;
 }
 button:hover{
     box-shadow: inset 5px 5px 0 0 #151565;
 }
 .bttn button:first-child{
-    background:rgb(233, 33, 33);
+    background:rgb(230, 51, 51);
+}
+.bttn button:first-child:hover{
+    background:rgb(226, 21, 21);
+}
+.bttn button:last-child:hover{
+    background:#2121a2;
 }
