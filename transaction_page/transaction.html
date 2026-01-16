@@ -10,8 +10,9 @@
 </head>
 
 <body>
-    <div class="transaction">
+    <div id="sidebar"></div>
 
+    <div class="transaction">
         <div class="transaction-header">
             <h1 class="title">GIAO DỊCH</h1>
             <button type="button" id="addBtn" class="add-btn">
@@ -47,7 +48,7 @@
                             </div>
                             <div class="category">
                                 <div class="input-group">
-                                    <label for="opt-category">Loại giao dịch</label>
+                                    <label for="opt-category">Danh mục</label>
                                     <select id="opt-category" name="category" required>
                                         <option value="">-- Chọn loại --</option>
                                         <option value="food">Ăn uống</option>
@@ -78,6 +79,7 @@
             </div>
         </div>
 
+
         <div class="tool">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -88,14 +90,15 @@
                 <option value="amount">Số tiền lớn nhất</option>
             </select>
         </div>
-        <div class="history">
-            Không có giao dịch nào
+        <div class="history-list" id="history-list">
+            Chưa có giao dịch nào
         </div>
 
     </div>
     </div>
-
+    
     <script src="./transaction.js"></script>
+    <script src="../navbar/loadSidebar.js"></script>
 </body>
 
 </html>

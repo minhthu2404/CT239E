@@ -1,0 +1,76 @@
+:root {
+    --sidebar-width: 250px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: #6e6ee1;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: linear-gradient(180deg, #7b7ce6, #6c6ddf);
+}
+
+.sidebar a {
+    display: flex;
+    font-family: Inter;
+    align-items: center;
+    color: #f0f0fc;
+    width: 90%;
+    height: 55px;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    opacity: 0.85;
+    gap: 15px;
+}
+
+.sidebar i {
+    font-size: 22px;
+}
+
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    opacity: 1;
+}
+
+.sidebar a.active {
+    color: white;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+}
+
+.sidebar a:focus {
+    background: rgba(255, 255, 255, 0.2)
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.username{
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    gap: 12px;
+}
