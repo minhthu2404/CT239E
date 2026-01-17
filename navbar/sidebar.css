@@ -64,13 +64,19 @@
 .sidebar a:focus {
     background: rgba(255, 255, 255, 0.2)
 }
-.logo{
+.logo {
     display: flex;
     justify-content: left;
     align-items: center;
     gap: 10px;
     font-size: 20px;
 }
+
+.logo > img{
+    width: 100%;
+    filter: drop-shadow(1px 1px #333);
+}
+
 .user {
     display: flex;
     justify-content: space-between;
@@ -81,7 +87,7 @@
 .line {
     width: 100%;
     border-color: #f0f0fc;
-    transform: translateY(9rem);
+    transform: translateY(7.5rem);
 }
 
 .username {
