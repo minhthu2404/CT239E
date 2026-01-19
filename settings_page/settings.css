@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-family: Inter, sans-serif;
+}
+
+.settings {
+    margin-left: var(--sidebar-width);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.settings-header .title {
+    color: #6e6ee1;
+    font-family: Montserrat;
+    font-size: 60px;
+    padding-left: 10px;
+    border-left: 5px solid #151565;
+    text-shadow: 1px 1px 2px #151565;
+}
