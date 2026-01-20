@@ -5,7 +5,7 @@
 }
 body {
     display: flex;
-    background-color: #ffffff;
+    background-color: #f0f0fc;
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -93,14 +93,14 @@ body {
 }
 
 .search-input:hover {
-    box-shadow: 3px 3px 6px #151565;
+    box-shadow: 2px 2px 3px #7d7daa;
 }
 
 .search-input:focus {
     outline: none;
     box-shadow:
         inset 0 2px 4px #0000001a,
-        3px 3px 6px #151565;
+        3px 3px 4px #7d7daa;
     background-color: #f4f4ff;
 }
 
@@ -320,12 +320,16 @@ button:hover {
 }
 
 .bttn button:first-child {
-    background: #0a0a70;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
     width: 40%;
 }
 
 .bttn button:first-child:hover {
-    background: rgb(226, 21, 21);
+    background: #6e6ee167;
+    border: 1px solid #6e6ee167;
+    color: #ffffff;
 }
 
 .bttn button:last-child:hover {
