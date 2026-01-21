@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tổng quan</title>
     <link rel="icon" href="/images/spendwise_favicon1.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/overview_page/overview.css">
     <link rel="stylesheet" href="/navbar/sidebar.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -15,14 +17,61 @@
     <div class="overview">
         <div class="title">
             <h1>Xin chào, <span id="user-name">Lisa</span>!</h1>
-            <p>Đây là bản tóm tắt tài chính của bạn hôm nay.</p>
+            <p>Bạn đã quản lý chi tiêu hôm nay thế nào rồi? Cùng kiểm tra nhé!</p>
         </div>
-        <div class="content">
 
+        <div class="content">
+            <div class="card">
+                <div id="card-1">
+                    <p class="title-card">
+                        <span class="icon wallet-svg">
+                            <i class="fa-duotone fa-solid fa-wallet"></i>
+                        </span>
+                        Số dư hiện tại
+                    </p>
+                    <p class="value-card">
+                        <span id="cash">1.200.000</span>đ
+                    </p>
+                </div>
+                <div id="card-2">
+                    <p class="title-card">
+                        <span class="icon arrowup-svg">
+                            <i class="fa-sharp fa-solid fa-arrow-trend-up"></i>
+                        </span>
+                        Tổng thu nhập
+                    </p>
+                    <p class="value-card">
+                        <span id="cash">1.200.000</span>đ
+                    </p>
+                </div>
+                <div id="card-3">
+                    <p class="title-card">
+                        <span class="icon arrowdown-svg">
+                            <i class="fa-sharp fa-solid fa-arrow-trend-down"></i>
+                        </span>
+                        Tổng chi tiêu
+                    </p>
+                    <p class="value-card">
+                        <span id="cash">1.000</span>đ
+                    </p>
+                </div> 
+            </div>
+
+            <div class="chart">
+                <div id="doughnut-chart-container">
+                    <canvas id="doughnut-chart"></canvas>
+                </div>
+                <div id="line-chart-container">
+                    <canvas id="line-chart"></canvas>
+                </div>
+            </div>
+            <div class="recent-transaction">
+                recent-transaction
+            </div>
         </div>
     </div>
     <script src="/navbar/loadSidebar.js"></script>
-    <script src="../navbar/loadSidebar.js"></script>
+    <script src="./overview.js"></script>
 </body>
 
 </html>

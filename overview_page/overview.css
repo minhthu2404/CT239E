@@ -1,12 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Goldman:wght@400;700&family=Indie+Flower&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
+
 * {
     box-sizing: border-box;
 }
+
 body {
-    background-color: #ffffff;
+    background-color: #f0f0fc;
     margin: 0;
     padding: 0;
     font-size: 18px;
     font-family: Inter, sans-serif;
+    color: #6e6ee1;
+}
+
+.title {
+    font-family: Montserrat;
+    font-size: 17px;
 }
 
 .overview {
@@ -15,4 +24,99 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+.content {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-gap: 2rem;
+}
+
+/*Định dạng thẻ card*/
+
+div.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+div.card>div {
+    padding: 0 20px;
+    border-radius: 10px;
+    height: 10em;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: transform 0.3s;
+}
+
+div.card>div:hover {
+    transform: translateY(-3%);
+}
+
+p.title-card {
+    font-size: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+span.icon {
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.wallet-svg {
+    background-color: #f0f0fc;
+    color: #6e6ee1;
+}
+
+.arrowup-svg {
+    background-color: #E8F5EE;
+    color: #1D8B6E;
+}
+
+.arrowdown-svg {
+    background-color: #FDECEF;
+    color: #E73B55;
+}
+
+p.value-card {
+    font-size: 35px;
+    font-family: Montserrat;
+    font-weight: bolder;
+    padding-left: 10px;
+}
+
+/*Định dạng biểu đồ*/
+
+div.chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+div.chart>div {
+    position: relative;
+    /*Chart.js responsive*/
+    border-radius: 10px;
+    height: 25em;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/*Định dạng lịch sử giao dịch*/
+
+div.recent-transaction {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    height: 20em;
+    width: 100%;
+    background-color: #fff;
 }
