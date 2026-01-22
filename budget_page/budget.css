@@ -126,6 +126,10 @@ i {
     display: none;
 }
 
+#formPopup {
+    background-color: #ebebff;
+}
+
 .add_budget {
     background: #fff;
     padding: 20px;
@@ -156,6 +160,7 @@ i {
     font-size: 18px;
     gap: 8px;
     width: 90%;
+    border-radius: 5px;
 }
 .form-input input{
     height: 40px;
