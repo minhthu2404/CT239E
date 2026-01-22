@@ -5,11 +5,16 @@ const formPopup = document.getElementById("formPopup");
 const title = document.getElementById("form-title");
 const cancel = document.getElementById("cancelBtn");
 
+const categoryName = document.getElementById("name-category");
+
 // mở form
 for (let i = 0; i < btn_add.length; i++) {
     btn_add[i].addEventListener("click", function () {
         overlay.classList.remove("hidden");
         title.innerText = "Thiết lập ngân sách";
+
+        const category = this.dataset.category;
+        categoryName.innerText = category;
     });
 }
 
@@ -18,6 +23,9 @@ for (let i=0; i < btn_adjust.length; i++){
     btn_adjust[i].addEventListener("click", function(){
         overlay.classList.remove("hidden");
         title.innerText = "Chỉnh sửa thiết lập";
+
+        const category = this.dataset.category;
+        categoryName.innerText = category;
     })
 }
 

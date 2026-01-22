@@ -144,15 +144,23 @@ i {
     padding: 0px 10px 24px 10px;
     width: 400px;
 } 
+.name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
 #form-title {
     color: #5454dd;
-    font-size: 35px;
+    font-size: 32px;
 }
-#name-budget{
-    color: #151565 ;
+#name-category{
+    color: #5454dd;
     display: flex;
+    font-size: 26px;
+    font-weight: bolder;
     justify-content: center;
-    font-size: 22px;
+    margin: 0px;
 }
 .form-input{
     display: flex;
