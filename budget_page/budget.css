@@ -1,0 +1,211 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0fc;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-family: Inter, sans-serif;
+}
+
+.settings {
+    margin-left: var(--sidebar-width);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-header .title {
+    color: #6e6ee1;
+    font-family: Montserrat;
+    font-size: 50px;
+    padding-left: 10px;
+    border-left: 5px solid #151565;
+    text-shadow: 1px 1px 2px #151565;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.budget {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 30px 24px;
+    background-color: #ffffff;
+    font-size: 18px;
+    box-shadow: 0px 0px 5px 2px #e1e0e0;
+}
+
+.budget:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.budget-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.budget-title {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+i {
+    font-size: 20px;
+    line-height: 2;
+}
+
+.budget-header .budget-title i {
+    font-size: 20px;
+    color: #0000ad;
+}
+
+.setup {
+    width: 150px;
+    height: 30px;
+    border: 0.5px solid #5454dd;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-size: 16px;
+    font-weight: 550;
+    color: #6e6ee1;
+    cursor: pointer;
+}
+
+.adjust {
+    border: 0.5px solid #f1f1fb;
+    border-radius: 50px;
+    background-color: #f1f1fb;
+    font-size: 16px;
+    font-weight: 550;
+    color: #31315f;
+    cursor: pointer;
+}
+
+.adjust:hover,
+.setup:hover {
+    border: 0.5px solid #6e6ee1;
+    background-color: #6e6ee1;
+    color: #ffffff;
+}
+
+
+/*Form*/
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#overlay.hidden {
+    display: none;
+}
+
+.add_budget {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 320px;
+}
+#budget-form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0px 10px 24px 10px;
+    width: 400px;
+} 
+#form-title {
+    color: #5454dd;
+    font-size: 35px;
+}
+#name-budget{
+    color: #151565 ;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+}
+.form-input{
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    gap: 8px;
+    width: 90%;
+}
+.form-input input{
+    height: 40px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.bttn {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    gap: 10px;;
+    height: 40px;
+}
+
+#budget-form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3c3ce4;
+    font-family: Inter;
+    color: #f0f0fc;
+    width: 200px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+}
+
+#budget-form button:hover {
+    box-shadow: inset 0 2px 4px #0000001a;
+}
+
+#budget-form .bttn button:first-child {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    width: 40%;
+}
+
+#budget-form .bttn button:first-child:hover {
+    background: #6e6ee167;
+    border: 1px solid #6e6ee167;
+    color: #ffffff;
+}
+
+#budget-form .bttn button:last-child:hover {
+    background: #141494;
+}

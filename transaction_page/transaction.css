@@ -59,8 +59,9 @@ body {
 }
 
 .add-btn:hover {
-    background-color: #2121a2;
+    background-color: #4242d4;
     box-shadow: inset 0 2px 4px #0000001a;
+    color: #ffffff;
 }
 
 .tool {

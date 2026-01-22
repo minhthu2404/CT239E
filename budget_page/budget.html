@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thiết lập</title>
     <link rel="icon" href="../images/spendwise_favicon1.png" type="images/x-">
-    <link rel="stylesheet" href="./settings.css">
+    <link rel="stylesheet" href="./budget.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -24,11 +24,11 @@
                         <i class="fa-solid fa-utensils"></i>
                         <span>Ăn uống</span>
                     </div>
-                    <button class="setup"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="adjust"><i class="fa-solid fa-pencil"></i></button>
                 </div>
                 <div class="budget-setting">
                     <p>Chưa thiết lập ngân sách</p>
-                    <button class="btn-setting">Thiết lập ngay</button>
+                    <button type="button" class="setup">Thiết lập ngay</button>
                 </div>
             </div>
 
@@ -38,11 +38,11 @@
                         <i class="fa-solid fa-car"></i>
                         <span>Di chuyển</span>
                     </div>
-                    <button class="setup"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="adjust"><i class="fa-solid fa-pencil"></i></button>
                 </div>
                 <div class="budget-setting">
                     <p>Chưa thiết lập ngân sách</p>
-                    <button class="btn-setting">Thiết lập ngay</button>
+                    <button type="button" class="setup">Thiết lập ngay</button>
                 </div>
             </div>
 
@@ -52,11 +52,11 @@
                         <i class="fa-solid fa-house"></i>
                         <span>Nhà cửa</span>
                     </div>
-                    <button class="setup"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="adjust"><i class="fa-solid fa-pencil"></i></button>
                 </div>
                 <div class="budget-setting">
                     <p>Chưa thiết lập ngân sách</p>
-                    <button class="btn-setting">Thiết lập ngay</button>
+                    <button type="button" class="setup">Thiết lập ngay</button>
                 </div>
             </div>
 
@@ -66,11 +66,11 @@
                         <i class="fa-solid fa-bag-shopping"></i>
                         <span>Mua sắm</span>
                     </div>
-                    <button class="setup"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="adjust"><i class="fa-solid fa-pencil"></i></button>
                 </div>
                 <div class="budget-setting">
                     <p>Chưa thiết lập ngân sách</p>
-                    <button class="btn-setting">Thiết lập ngay</button>
+                    <button type="button" class="setup">Thiết lập ngay</button>
                 </div>
             </div>
 
@@ -80,11 +80,11 @@
                         <i class="fa-solid fa-gamepad"></i>
                         <span>Giải trí</span>
                     </div>
-                    <button class="setup"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="adjust"><i class="fa-solid fa-pencil"></i></button>
                 </div>
                 <div class="budget-setting">
                     <p>Chưa thiết lập ngân sách</p>
-                    <button class="btn-setting">Thiết lập ngay</button>
+                    <button type="button" class="setup">Thiết lập ngay</button>
                 </div>
             </div>
 
@@ -94,11 +94,11 @@
                         <i class="fa-solid fa-heart-pulse"></i>
                         <span>Sức khỏe</span>
                     </div>
-                    <button class="setup"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="adjust"><i class="fa-solid fa-pencil"></i></button>
                 </div>
                 <div class="budget-setting">
                     <p>Chưa thiết lập ngân sách</p>
-                    <button class="btn-setting">Thiết lập ngay</button>
+                    <button type="button" class="setup">Thiết lập ngay</button>
                 </div>
             </div>
 
@@ -108,11 +108,11 @@
                         <i class="fa-solid fa-graduation-cap"></i>
                         <span>Giáo dục</span>
                     </div>
-                    <button class="setup"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="adjust"><i class="fa-solid fa-pencil"></i></button>
                 </div>
                 <div class="budget-setting">
                     <p>Chưa thiết lập ngân sách</p>
-                    <button class="btn-setting">Thiết lập ngay</button>
+                    <button type="button" class="setup">Thiết lập ngay</button>
                 </div>
             </div>
 
@@ -122,30 +122,35 @@
                         <i class="fa-solid fa-gift"></i>
                         <span>Quà tặng</span>
                     </div>
-                    <button class="setup"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="adjust"><i class="fa-solid fa-pencil"></i></button>
                 </div>
                 <div class="budget-setting">
                     <p>Chưa thiết lập ngân sách</p>
-                    <button class="btn-setting">Thiết lập ngay</button>
+                    <button type="button" class="setup">Thiết lập ngay</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Form
+
     <div id="overlay" class="hidden">
         <div id="formPopup" class="add_budget">
             <form id="budget-form">
-                <h1 class="form-title">Thiết lập ngân sách</h1>
-                <div id="name-budget"></div>
+                <div class="name">
+                    <h1 id="form-title">Thiết lập ngân sách</h1>
+                    <div id="name-budget">Tên danh mục</div>
+                </div>
                 <div class="form-input">
                     <label>Hạn mức chi tiêu (tháng)</label>
-                    <input type="number" placeholder="Nhập số tiền">
+                    <input id="amount" type="number" placeholder="Nhập số tiền" required>
                 </div>
-                <button id="btn-formbudget">Lưu thiết lập</button>
+                <div class="bttn">
+                    <button id="cancelBtn" type="button">Hủy</button>
+                    <button type="submit">Lưu thiết lập</button>
+                </div>
             </form>
         </div>
     </div>
-    -->
+    <script src="../budget_page/budget.js"></script>
     <script src="../navbar/loadSidebar.js"></script>
 </body>
 

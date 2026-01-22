@@ -16,15 +16,14 @@
     <div class="transaction">
         <div class="transaction-header">
             <h1 class="title">GIAO DỊCH</h1>
-            <button type="button" id="addBtn" class="add-btn">
+            <button type="button" id="addBtn" class="add-btn" onclick="openForm('add')">
                 <svg width="20" height="20" viewBox="0 0 24 24">
                     <path d="M12 5v14M5 12h14" stroke="white" stroke-width="7" stroke-linecap="round" />
                 </svg>
                 <span class="add-text">Thêm giao dịch</span>
             </button>
-            <div id="overlay" class="hidden">
-
-                <div id="formPopup" class="add_transaction">
+            <div id="overlay" class="hidden" onclick="closeForm()">
+                <div id="formPopup" class="add_transaction" onclick="event.stopPropagation()">
                     <form id="transactionForm">
                         <h1 class="add-title">Thêm giao dịch mới</h1>
                         <fieldset class="type-opt">
