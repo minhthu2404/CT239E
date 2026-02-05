@@ -34,7 +34,7 @@ const categories = {
     ],
     chi: [
         { value: "food", text: "Ăn uống" },
-        { value: "moverment", text: "Di chuyển" },
+        { value: "movement", text: "Di chuyển" },
         { value: "house", text: "Nhà cửa" },
         { value: "shopping", text: "Mua sắm" },
         { value: "entertainment", text: "Giải trí" },
@@ -94,12 +94,19 @@ transactionForm.addEventListener('submit', function (e) {
         return;
     }
 
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user || !user.username) {
+        alert("Vui lòng đăng nhập lại!");
+        return;
+    }
+
     const transaction = {
         type: type,
         amount: parseFloat(amount),
         date: date,
         category: category,
-        note: note
+        note: note,
+        username: user.username
     };
 
     fetch('http://localhost:3000/api/transactions', {
@@ -129,7 +136,10 @@ transactionForm.addEventListener('submit', function (e) {
 // Hàm tải danh sách giao dịch
 async function loadTransactions() {
     try {
-        const response = await fetch('http://localhost:3000/api/transactions');
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user || !user.username) return;
+
+        const response = await fetch(`http://localhost:3000/api/transactions?username=${user.username}`);
         if (!response.ok) throw new Error('Failed to load transactions');
         const transactions = await response.json();
 
@@ -161,7 +171,7 @@ async function loadTransactions() {
             const color = isThu ? '#1D8B6E' : '#E73B55';
 
             item.innerHTML = `
-                <div class="info">
+                <div class="info" style="display: flex; flex-direction: column; gap: 6px;">
                     <div class="cat-name" style="font-weight: bold; font-family: Montserrat;">${catText}</div>
                     <div class="date" style="font-size: 0.9em; color: gray;">${date}</div>
                     <div class="note-text" style="font-size: 0.8em; color: #555;">${t.note || ''}</div>

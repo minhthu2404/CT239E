@@ -1,13 +1,39 @@
 //Đảm bảo các phần tử HTML đã tồn tại trước khi JavaScript can thiệp vào.
 
 document.addEventListener('DOMContentLoaded', function () {
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    //Hiển thị tên đăng nhập trên trang 
+    if (localUser && localUser.username) {
+        fetch(`http://localhost:3000/api/user/${localUser.username}`)
+            .then(res => {
+                if (!res.ok) throw new Error('User check failed');
+                return res.json();
+            })
+            .then(user => {
+                const userNameElement = document.getElementById('user-name');
+                if (userNameElement) {
+                    userNameElement.textContent = user.username;
+                }
+            })
+            .catch(err => {
+                console.error('Error fetching user:', err);
+                window.location.href = '../welcome_page/welcome_spendwise.html';
+            });
+    } else {
+        // Chuyển về đăng nhập nếu không tìm thấy user
+        window.location.href = '../welcome_page/welcome_spendwise.html';
+    }
+
     loadOverviewData();
 });
 
 //Hàm lấy dữ liệu từ server
 async function loadOverviewData() {
     try {
-        const response = await fetch('http://localhost:3000/api/transactions');
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user || !user.username) return; // Should handle not logged in better, but for now just return
+
+        const response = await fetch(`http://localhost:3000/api/transactions?username=${user.username}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

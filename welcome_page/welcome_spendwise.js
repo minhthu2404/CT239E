@@ -59,110 +59,146 @@ eyeButtons.forEach(btn => {
 const loginForm = document.getElementById('login-form');
 const registerForm = document.getElementById('register-form');
 
-function showError (input, message) {
+function showError(input, message) {
     const formGroup = input.parentElement;
     const errorElement = formGroup.querySelector('.error-message');
     formGroup.classList.add('error');
     input.classList.add('invalid');
-    if (errorElement){
+    if (errorElement) {
         errorElement.innerText = message;
     }
 }
 
 function showSuccess(input) {
     const formGroup = input.parentElement;
-    const errorElement =  formGroup.querySelector('.error-message');
+    const errorElement = formGroup.querySelector('.error-message');
     formGroup.classList.remove('error');
     input.classList.remove('invalid');
-    if(errorElement){
+    if (errorElement) {
         errorElement.innerText = ' ';
     }
 }
 
-function getFieldName(input){
+function getFieldName(input) {
     const id = input.id;
-    if(id === 'username' || id === 'new-name') return 'Tên đăng nhập';
-    if(id === 'new-email') return 'Email';
-    if(id.includes('password')) return 'Mật khẩu';
+    if (id === 'username' || id === 'new-name') return 'Tên đăng nhập';
+    if (id === 'new-email') return 'Email';
+    if (id.includes('password')) return 'Mật khẩu';
     return input.placeholder;
 }
 
-function checkRequired (inputs){
+function checkRequired(inputs) {
     let isValid = true;
     //Duyệt qua từng input 
     inputs.forEach(input => {
-        if(input.value.trim() === ''){
+        if (input.value.trim() === '') {
             showError(input, `Vui lòng nhập ${getFieldName(input).toLowerCase()}`);
             isValid = false;
-        }else{
+        } else {
             showSuccess(input);
         }
     });
     return isValid;
 }
 
-function checkLegth(input, min, max){
-    if(input.value.length < min){
+function checkLegth(input, min, max) {
+    if (input.value.length < min) {
         showError(input, `${getFieldName(input)} phải có ít nhất ${min} ký tự`);
         return false;
-    }else if(input.value.length > max){
+    } else if (input.value.length > max) {
         showError(input, `${getFieldName(input)} tối đa ${max} ký tự`);
         return false;
-    }else{
+    } else {
         showSuccess(input);
         return true;
     }
 }
 
-function checkEmail (input){
+function checkEmail(input) {
     const emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if(emailReg.test(input.value.trim())){
+    if (emailReg.test(input.value.trim())) {
         showSuccess(input);
         return true;
-    }else{
+    } else {
         showError(input, `Email không hợp lệ!`);
         return false;
     }
 }
 
-function checkPwdMatch (input1, input2){
-    if(input1.value !== input2.value){
+function checkPwdMatch(input1, input2) {
+    if (input1.value !== input2.value) {
         showError(input2, `Mật khẩu không đúng!`);
         return false;
-    }else{
-        showSuccess(input);
+    } else {
+        showSuccess(input2);
         return true;
     }
 }
 
 //Login-form event listen
 
-loginForm.addEventListener('submit', function(e){
+loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const username = document.getElementById('username');
     const passWord = document.getElementById('login-password');
     const isRequiredValid = checkRequired([username, passWord]);
-    if(isRequiredValid){
+    if (isRequiredValid) {
         //API call
-        alert('Login successfully!');
+        fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: username.value, password: passWord.value })
+        })
+            .then(response => response.json().then(data => ({ status: response.status, body: data })))
+            .then(({ status, body }) => {
+                if (status === 200) {
+                    // Lưu thông tin user
+                    localStorage.setItem('user', JSON.stringify(body.user));
+                    // Chuyển hướng đến trang overview
+                    window.location.href = '../overview_page/overview.html';
+                } else {
+                    alert(body.message || 'Đăng nhập thất bại');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Lỗi kết nối server');
+            });
     }
 });
 
 //Register-form event listen
 
-registerForm.addEventListener('submit', function(e){
+registerForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const username = document.getElementById('new-name');
     const email = document.getElementById('new-email');
     const password = document.getElementById('register-password');
     const confirmpwd = document.getElementById('confirm-password');
-    let valid = checkRequired([username,email,password,confirmpwd]);
+    let valid = checkRequired([username, email, password, confirmpwd]);
     //Quy tắc toán tử &&
     valid = checkEmail(email) && valid;
-    valid = checkLegth(password,8,20) && valid;
-    valid = checkPwdMatch (password, confirmpwd) && valid;
-    if (valid){
+    valid = checkLegth(password, 8, 20) && valid;
+    valid = checkPwdMatch(password, confirmpwd) && valid;
+    if (valid) {
         //API call
-        alert('Register successfully!');
+        fetch('http://localhost:3000/api/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: username.value, email: email.value, password: password.value })
+        })
+            .then(response => response.json().then(data => ({ status: response.status, body: data })))
+            .then(({ status, body }) => {
+                if (status === 201) {
+                    // Chuyển về login form
+                    document.getElementById('sign-in-btn').click();
+                } else {
+                    alert(body.message || 'Đăng ký thất bại');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Lỗi kết nối server');
+            });
     }
 });
