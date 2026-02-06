@@ -130,7 +130,7 @@ function renderDoughnutChart(transactions) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Cơ cấu chi tiêu',
+                    text: 'CƠ CẤU CHI TIÊU',
                     font: { size: 18 }
                 },
                 legend: {
@@ -201,7 +201,7 @@ function renderLineChart(transactions) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Thu nhập & Chi tiêu theo thời gian',
+                    text: 'THU NHẬP & CHI TIÊU THEO THỜI GIAN',
                     font: { size: 16 }
                 }
             },
@@ -232,3 +232,75 @@ function getCategoryName(key) {
     };
     return map[key] || key;
 }
+
+//Hàm tải danh sách giao dịch
+const categories = {
+    thu: [
+        { value: "salary", text: "Lương" },
+        { value: "bonus", text: "Thưởng" },
+        { value: "interest", text: "Lãi suất" },
+        { value: "sale", text: "Bán đồ" },
+        { value: "other", text: "Khác" }
+    ],
+    chi: [
+        { value: "food", text: "Ăn uống" },
+        { value: "movement", text: "Di chuyển" },
+        { value: "house", text: "Nhà cửa" },
+        { value: "shopping", text: "Mua sắm" },
+        { value: "entertainment", text: "Giải trí" },
+        { value: "health", text: "Sức khỏe" },
+        { value: "education", text: "Giáo dục" },
+        { value: "gift", text: "Quà tặng" },
+        { value: "other", text: "Khác" }
+    ]
+};
+
+async function loadTransactions(limit = null) {
+    try{
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user || !user.username) return;
+        const response = await fetch(`http://localhost:3000/api/transactions?username=${user.username}`);
+        if (!response.ok) throw new Error('Failed to load transactions');
+        const transactions = await response.json();
+        const list = document.getElementById('history-list');
+        // list.innerHTML = '';
+        if (transactions.length === 0){
+            list.innerHTML = '<div style="text-align:center; padding: 20px;">Chưa có giao dịch nào</div>';
+            return;
+        }
+
+        const displayData = limit ? transactions.slice(0, limit) : transactions;
+
+        displayData.forEach(e => {
+            const item = document.createElement('div');
+            item.className = 'history-item';
+            const date = new Date(e.date).toLocaleDateString('vi-VN');
+            const amount = new Intl.NumberFormat('vi-VN').format(e.amount) + 'đ';
+            let catText = e.category;
+            for (const type in categories) {
+                const found = categories[type].find(c => c.value === e.category);
+                if (found) {
+                    catText = found.text;
+                    break;
+                }
+            }
+
+            const isThu = e.type === 'thu';
+            const color = isThu ? '#1D8B5E' : '#E73B55';
+            item.innerHTML = `
+                <div class="info" style="display: flex; flex-direction: column; gap: 6px;">
+                    <div class="cat-name" style="font-weight: bold; font-family: Montserrat;">${catText}</div>
+                    <div class="date" style="font-size: 0.9em; color: gray;">${date}</div>
+                    <div class="note-text" style="font-size: 0.8em; color: #555;">${e.note || ''}</div>
+                </div>
+                <div class="amount" style="color: ${color}; font-weight: 400;">
+                    ${isThu ? '+' : '-'}${amount}
+                </div>`;
+            list.appendChild(item);
+        })
+    }catch(e){
+        console.error('Error loading transactions:', e);
+    }
+}
+
+loadTransactions(3);

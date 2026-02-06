@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Connection
-// NOTE: Thay đổi chuỗi kết nối này nếu bạn dùng MongoDB Atlas hoặc có cấu hình khác
+// NOTE: Thay đổi chuỗi kết nối này nếu dùng MongoDB Atlas hoặc có cấu hình khác
 const mongoURI = 'mongodb://localhost:27017/spendwise';
 
 mongoose.connect(mongoURI)
@@ -55,7 +55,6 @@ app.post('/api/login', async (req, res) => {
       return res.status(400).json({ message: 'Tên đăng nhập hoặc mật khẩu không đúng' });
     }
 
-    // In a real app, use bcrypt to compare hashed passwords
     if (user.password !== password) {
       return res.status(400).json({ message: 'Tên đăng nhập hoặc mật khẩu không đúng' });
     }

@@ -176,15 +176,14 @@ async function loadTransactions() {
                     <div class="date" style="font-size: 0.9em; color: gray;">${date}</div>
                     <div class="note-text" style="font-size: 0.8em; color: #555;">${t.note || ''}</div>
                 </div>
-                <div class="amount" style="color: ${color}; font-weight: bold;">
+                <div class="amount" style="color: ${color}; font-weight: 400;">
                     ${isThu ? '+' : '-'}${amount}
-                </div>
-            `;
+                </div>`;
             list.appendChild(item);
         });
 
-    } catch (e) {
-        console.error('Error loading transactions:', e);
+    } catch (t) {
+        console.error('Error loading transactions:', t);
     }
 }
 

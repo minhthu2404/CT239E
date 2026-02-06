@@ -130,7 +130,6 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-    margin-left: 40px;
     gap: 15px;
     border-radius: 5px;
 }
