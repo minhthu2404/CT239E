@@ -5,7 +5,7 @@ fetch("../navbar/sidebar.html")
 
     const currentPath = window.location.pathname;
 
-    const links = document.querySelectorAll(".sidebar a");
+    const links = document.querySelectorAll(".sidebar .link a");
 
     links.forEach(link => link.classList.remove("active"));
 
@@ -16,7 +16,7 @@ fetch("../navbar/sidebar.html")
       }
     });
 
-    // Update User Info
+    // Cập nhật thông tin người dùng 
     const localUser = JSON.parse(localStorage.getItem('user'));
     if (localUser && localUser.username) {
       fetch(`http://localhost:3000/api/user/${localUser.username}`)
@@ -30,12 +30,20 @@ fetch("../navbar/sidebar.html")
         .catch(err => console.error('Sidebar user fetch error:', err));
     }
 
-    // Logout Handler
+    // Xử lý đăng xuất
     const logoutBtn = document.querySelector('.sidebar .logout');
     if (logoutBtn) {
       logoutBtn.addEventListener('click', (e) => {
-        // e.preventDefault(); // If we want to prevent default navigation, but we want it to go to welcome page
+        e.preventDefault();
         localStorage.removeItem('user');
       });
+    }
+
+    // Loader
+    const pageLoader = document.getElementById("page-loader");
+    if (pageLoader) {
+      setTimeout(() => {
+        pageLoader.classList.add("fade-out");
+      }, 400);
     }
   });

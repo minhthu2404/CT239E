@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "698fcb19366c1bb8c81be968"
+  },
+  "username": "Kim Yen",
+  "email": "nguyenkimyen120205@gmail.com",
+  "password": "kimyen120205",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901b63366c1bb8c81be993"
+  },
+  "username": "spendwise",
+  "email": "spendwise123@gmail.com",
+  "password": "spendwise123",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901be9366c1bb8c81be998"
+  },
+  "username": "spendwise123",
+  "email": "spendwise122@gmail.com",
+  "password": "spendwise123",
+  "__v": 0
+}]

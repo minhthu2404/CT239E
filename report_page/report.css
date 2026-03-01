@@ -13,13 +13,22 @@ body {
 
 .title {
     font-family: Montserrat;
-    font-size: 17px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.title>h1 {
+    color: #6e6ee1;
+    font-size: 50px;
+    padding-left: 10px;
+    border-left: 5px solid #151565;
+    text-shadow: 1px 1px 2px #151565;
+    text-transform: uppercase;
+}
+
 #opt {
+    font-size: 18px;
     font-family: Inter;
     font-weight: 500;
     color: #6e6ee1;
@@ -120,4 +129,9 @@ div.chart>div {
     width: 100%;
     background-color: #fff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: transform 0.3s;
+}
+
+div.chart>div:hover {
+    transform: translateY(-1%);
 }

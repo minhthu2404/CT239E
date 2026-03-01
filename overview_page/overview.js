@@ -118,23 +118,33 @@ function renderDoughnutChart(transactions) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Chi tiêu theo danh mục',
+                label: 'Khoản chi tiêu',
                 data: data,
                 backgroundColor: backgroundColors,
-                hoverOffset: 4
+                hoverOffset: 10,
+                borderRadius: 5,
+                borderWidth: 3
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            cutout: '45%',
             plugins: {
                 title: {
                     display: true,
                     text: 'CƠ CẤU CHI TIÊU',
-                    font: { size: 18 }
+                    font: { size: 20, weight: 'bold' },
+                    color: '#6e6ee1'
                 },
                 legend: {
-                    position: 'bottom'
+                    position: 'bottom',
+                    labels: {
+                        usePointStyle: true,
+                        color: '#6e6ee1',
+                        padding: 20,
+                        font: { size: 13, weight: 500}
+                    }
                 }
             }
         }
@@ -180,7 +190,7 @@ function renderLineChart(transactions) {
                 {
                     label: 'Thu nhập',
                     data: incomeData,
-                    borderColor: '#1D8B6E', // Green
+                    borderColor: '#1D8B6E',
                     backgroundColor: 'rgba(29, 139, 110, 0.1)',
                     tension: 0.3,
                     fill: true
@@ -188,7 +198,7 @@ function renderLineChart(transactions) {
                 {
                     label: 'Chi tiêu',
                     data: expenseData,
-                    borderColor: '#E73B55', // Red
+                    borderColor: '#E73B55',
                     backgroundColor: 'rgba(231, 59, 85, 0.1)',
                     tension: 0.3,
                     fill: true
@@ -202,7 +212,14 @@ function renderLineChart(transactions) {
                 title: {
                     display: true,
                     text: 'THU NHẬP & CHI TIÊU THEO THỜI GIAN',
-                    font: { size: 16 }
+                    font: { size: 20, weight: 'bold' },
+                    color: '#6e6ee1'
+                },
+                legend: {
+                    labels: {
+                        color: '#6e6ee1',
+                        font: { size: 13, weight: 500}
+                    }
                 }
             },
             interaction: {
@@ -210,7 +227,15 @@ function renderLineChart(transactions) {
                 intersect: false,
             },
             scales: {
+                x: {
+                    ticks: {
+                        color: '#6e6ee1'
+                    }
+                },
                 y: {
+                    ticks: {
+                        color: '#6e6ee1'
+                    },
                     beginAtZero: true
                 }
             }
@@ -221,7 +246,7 @@ function renderLineChart(transactions) {
 function getCategoryName(key) {
     const map = {
         'food': 'Ăn uống',
-        'moverment': 'Di chuyển',
+        'movement': 'Di chuyển',
         'house': 'Nhà cửa',
         'shopping': 'Mua sắm',
         'entertainment': 'Giải trí',

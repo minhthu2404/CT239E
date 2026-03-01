@@ -1,0 +1,1137 @@
+[{
+  "_id": {
+    "$oid": "697b776e1bcc2534993f3afe"
+  },
+  "type": "thu",
+  "amount": 65555,
+  "date": {
+    "$date": "2026-01-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "mua đồ",
+  "createdAt": {
+    "$date": "2026-01-29T15:06:22.428Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697b77881bcc2534993f3b01"
+  },
+  "type": "chi",
+  "amount": 54111,
+  "date": {
+    "$date": "2026-01-31T00:00:00.000Z"
+  },
+  "category": "moverment",
+  "note": "",
+  "createdAt": {
+    "$date": "2026-01-29T15:06:48.032Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "698fcb46366c1bb8c81be975"
+  },
+  "type": "thu",
+  "amount": 12000,
+  "date": {
+    "$date": "2026-02-14T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "",
+  "username": "Kim Yen",
+  "createdAt": {
+    "$date": "2026-02-14T01:09:26.748Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699018f1366c1bb8c81be98f"
+  },
+  "type": "thu",
+  "amount": 50000,
+  "date": {
+    "$date": "2026-02-05T00:00:00.000Z"
+  },
+  "category": "bonus",
+  "note": "",
+  "username": "Kim Yen",
+  "createdAt": {
+    "$date": "2026-02-14T06:40:49.808Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901cfa366c1bb8c81be9a9"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-01-05T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T06:58:02.359Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901d2d366c1bb8c81be9ac"
+  },
+  "type": "chi",
+  "amount": 2000000,
+  "date": {
+    "$date": "2025-01-01T00:00:00.000Z"
+  },
+  "category": "house",
+  "note": "Tiền trọ",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T06:58:53.590Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901d71366c1bb8c81be9af"
+  },
+  "type": "chi",
+  "amount": 1800000,
+  "date": {
+    "$date": "2025-01-10T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T07:00:01.908Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901db1366c1bb8c81be9b2"
+  },
+  "type": "chi",
+  "amount": 600000,
+  "date": {
+    "$date": "2025-01-15T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "Tiền xăng",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T07:01:05.619Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901dd9366c1bb8c81be9b5"
+  },
+  "type": "chi",
+  "amount": 900000,
+  "date": {
+    "$date": "2025-01-22T00:00:00.000Z"
+  },
+  "category": "shopping",
+  "note": "Đồ dùng cá nhân",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T07:01:45.087Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901e24366c1bb8c81be9b8"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-02-05T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T2",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T07:03:00.089Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901e9a366c1bb8c81be9bd"
+  },
+  "type": "chi",
+  "amount": 1700000,
+  "date": {
+    "$date": "2025-02-09T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T07:04:58.916Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901eca366c1bb8c81be9c0"
+  },
+  "type": "chi",
+  "amount": 500000,
+  "date": {
+    "$date": "2025-02-14T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "Tiền xăng",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T07:05:46.231Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901f29366c1bb8c81be9db"
+  },
+  "type": "chi",
+  "amount": 700000,
+  "date": {
+    "$date": "2025-02-20T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "Xem phim",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T07:07:21.715Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69901f5e366c1bb8c81be9de"
+  },
+  "type": "chi",
+  "amount": 1000000,
+  "date": {
+    "$date": "2025-02-26T00:00:00.000Z"
+  },
+  "category": "house",
+  "note": "Gửi gia đình",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-14T07:08:14.826Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e5f719e0a1bc93cafb84e"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-03-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T3",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:33:21.086Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e5f939e0a1bc93cafb851"
+  },
+  "type": "chi",
+  "amount": 450000,
+  "date": {
+    "$date": "2025-03-05T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:33:55.376Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e5fb79e0a1bc93cafb854"
+  },
+  "type": "chi",
+  "amount": 300000,
+  "date": {
+    "$date": "2025-03-10T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "Tiền xăng",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:34:31.772Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e5fd99e0a1bc93cafb857"
+  },
+  "type": "chi",
+  "amount": 300000,
+  "date": {
+    "$date": "2025-03-18T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "Xem phim",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:35:05.353Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e5ffb9e0a1bc93cafb85a"
+  },
+  "type": "chi",
+  "amount": 700000,
+  "date": {
+    "$date": "2025-03-25T00:00:00.000Z"
+  },
+  "category": "shopping",
+  "note": "Đồ dùng cá nhân",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:35:39.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e603b9e0a1bc93cafb85d"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-04-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T4",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:36:43.701Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e608f9e0a1bc93cafb868"
+  },
+  "type": "chi",
+  "amount": 480000,
+  "date": {
+    "$date": "2025-04-06T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:38:07.237Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e60b89e0a1bc93cafb86b"
+  },
+  "type": "chi",
+  "amount": 1200000,
+  "date": {
+    "$date": "2025-04-12T00:00:00.000Z"
+  },
+  "category": "shopping",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:38:48.328Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e60da9e0a1bc93cafb86e"
+  },
+  "type": "chi",
+  "amount": 320000,
+  "date": {
+    "$date": "2025-04-20T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "Đi lại",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:39:22.673Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e60fa9e0a1bc93cafb871"
+  },
+  "type": "chi",
+  "amount": 400000,
+  "date": {
+    "$date": "2025-04-26T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:39:54.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e61189e0a1bc93cafb874"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-05-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T5",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:40:24.548Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e61349e0a1bc93cafb877"
+  },
+  "type": "chi",
+  "amount": 500000,
+  "date": {
+    "$date": "2025-05-05T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:40:52.786Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e61559e0a1bc93cafb87a"
+  },
+  "type": "chi",
+  "amount": 900000,
+  "date": {
+    "$date": "2025-05-11T00:00:00.000Z"
+  },
+  "category": "education",
+  "note": "Học tập",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:41:25.395Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e61789e0a1bc93cafb87d"
+  },
+  "type": "chi",
+  "amount": 300000,
+  "date": {
+    "$date": "2025-05-18T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "Đi lại",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:42:00.648Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e619a9e0a1bc93cafb880"
+  },
+  "type": "chi",
+  "amount": 450000,
+  "date": {
+    "$date": "2025-04-27T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:42:34.120Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e61bb9e0a1bc93cafb885"
+  },
+  "type": "chi",
+  "amount": 450000,
+  "date": {
+    "$date": "2025-05-27T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:43:07.991Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e61db9e0a1bc93cafb888"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-06-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T6",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:43:39.496Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e61fa9e0a1bc93cafb88b"
+  },
+  "type": "chi",
+  "amount": 520000,
+  "date": {
+    "$date": "2025-06-04T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:44:10.808Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e62269e0a1bc93cafb88e"
+  },
+  "type": "chi",
+  "amount": 1000000,
+  "date": {
+    "$date": "2025-06-09T00:00:00.000Z"
+  },
+  "category": "shopping",
+  "note": "Đồ dùng cá nhân",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:44:54.808Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e62459e0a1bc93cafb891"
+  },
+  "type": "chi",
+  "amount": 350000,
+  "date": {
+    "$date": "2025-06-16T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "Vé xe",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:45:25.629Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e62639e0a1bc93cafb894"
+  },
+  "type": "chi",
+  "amount": 480000,
+  "date": {
+    "$date": "2025-06-24T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:45:55.225Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e62889e0a1bc93cafb897"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-07-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T7",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:46:32.378Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e62a39e0a1bc93cafb89a"
+  },
+  "type": "chi",
+  "amount": 550000,
+  "date": {
+    "$date": "2025-07-05T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:46:59.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e62d09e0a1bc93cafb89d"
+  },
+  "type": "chi",
+  "amount": 1500000,
+  "date": {
+    "$date": "2025-07-10T00:00:00.000Z"
+  },
+  "category": "other",
+  "note": "Du lịch",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:47:44.918Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e62ee9e0a1bc93cafb8a0"
+  },
+  "type": "chi",
+  "amount": 330000,
+  "date": {
+    "$date": "2025-07-17T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:48:14.315Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e63069e0a1bc93cafb8a3"
+  },
+  "type": "chi",
+  "amount": 600000,
+  "date": {
+    "$date": "2025-07-25T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:48:38.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e634c9e0a1bc93cafb8ac"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-08-03T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T8",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:49:48.948Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e63649e0a1bc93cafb8af"
+  },
+  "type": "chi",
+  "amount": 560000,
+  "date": {
+    "$date": "2025-08-06T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:50:12.971Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e637e9e0a1bc93cafb8b2"
+  },
+  "type": "chi",
+  "amount": 1200000,
+  "date": {
+    "$date": "2025-08-12T00:00:00.000Z"
+  },
+  "category": "shopping",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:50:38.764Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e63a39e0a1bc93cafb8b5"
+  },
+  "type": "chi",
+  "amount": 340000,
+  "date": {
+    "$date": "2025-08-19T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "Đi lại",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:51:15.567Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e63bd9e0a1bc93cafb8b8"
+  },
+  "type": "chi",
+  "amount": 520000,
+  "date": {
+    "$date": "2025-08-27T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:51:41.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e63db9e0a1bc93cafb8bb"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-09-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T9",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:52:11.894Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e63f79e0a1bc93cafb8be"
+  },
+  "type": "chi",
+  "amount": 580000,
+  "date": {
+    "$date": "2025-09-04T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:52:39.945Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e641e9e0a1bc93cafb8c1"
+  },
+  "type": "chi",
+  "amount": 1000000,
+  "date": {
+    "$date": "2025-09-11T00:00:00.000Z"
+  },
+  "category": "education",
+  "note": "Học tập",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:53:18.563Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e64399e0a1bc93cafb8c4"
+  },
+  "type": "chi",
+  "amount": 360000,
+  "date": {
+    "$date": "2025-09-18T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:53:45.060Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e64649e0a1bc93cafb8c7"
+  },
+  "type": "chi",
+  "amount": 550000,
+  "date": {
+    "$date": "2025-09-26T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:54:28.333Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e647d9e0a1bc93cafb8ca"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-10-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T10",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:54:53.836Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e649b9e0a1bc93cafb8cd"
+  },
+  "type": "chi",
+  "amount": 600000,
+  "date": {
+    "$date": "2025-10-06T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:55:23.202Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e64c09e0a1bc93cafb8d0"
+  },
+  "type": "chi",
+  "amount": 1300000,
+  "date": {
+    "$date": "2025-10-12T00:00:00.000Z"
+  },
+  "category": "shopping",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:56:00.218Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e64e19e0a1bc93cafb8d3"
+  },
+  "type": "chi",
+  "amount": 1200000,
+  "date": {
+    "$date": "2025-10-15T00:00:00.000Z"
+  },
+  "category": "health",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:56:33.391Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e65009e0a1bc93cafb8d6"
+  },
+  "type": "chi",
+  "amount": 380000,
+  "date": {
+    "$date": "2025-10-19T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:57:04.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e65229e0a1bc93cafb8d9"
+  },
+  "type": "chi",
+  "amount": 600000,
+  "date": {
+    "$date": "2025-10-27T00:00:00.000Z"
+  },
+  "category": "gift",
+  "note": "Sinh nhật",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:57:38.661Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e653d9e0a1bc93cafb8dc"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-11-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T11",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:58:05.358Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e655f9e0a1bc93cafb8df"
+  },
+  "type": "chi",
+  "amount": 620000,
+  "date": {
+    "$date": "2025-11-05T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:58:39.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e65879e0a1bc93cafb8e2"
+  },
+  "type": "chi",
+  "amount": 900000,
+  "date": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "category": "education",
+  "note": "Học tập",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:59:19.548Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e659f9e0a1bc93cafb8e5"
+  },
+  "type": "chi",
+  "amount": 400000,
+  "date": {
+    "$date": "2025-11-17T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T02:59:43.273Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e65bc9e0a1bc93cafb8e8"
+  },
+  "type": "chi",
+  "amount": 650000,
+  "date": {
+    "$date": "2025-11-25T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T03:00:12.756Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e65e19e0a1bc93cafb8eb"
+  },
+  "type": "thu",
+  "amount": 8000000,
+  "date": {
+    "$date": "2025-12-01T00:00:00.000Z"
+  },
+  "category": "salary",
+  "note": "Lương T12",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T03:00:49.905Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e65f69e0a1bc93cafb8ee"
+  },
+  "type": "thu",
+  "amount": 10000000,
+  "date": {
+    "$date": "2025-12-01T00:00:00.000Z"
+  },
+  "category": "bonus",
+  "note": "Thưởng Tết",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T03:01:10.979Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e660d9e0a1bc93cafb8f1"
+  },
+  "type": "chi",
+  "amount": 700000,
+  "date": {
+    "$date": "2025-12-05T00:00:00.000Z"
+  },
+  "category": "food",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T03:01:33.426Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e663f9e0a1bc93cafb8f4"
+  },
+  "type": "chi",
+  "amount": 2000000,
+  "date": {
+    "$date": "2025-12-10T00:00:00.000Z"
+  },
+  "category": "gift",
+  "note": "Quà cuối năm",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T03:02:23.283Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e66609e0a1bc93cafb8f7"
+  },
+  "type": "chi",
+  "amount": 500000,
+  "date": {
+    "$date": "2025-12-18T00:00:00.000Z"
+  },
+  "category": "movement",
+  "note": "Về quê",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T03:02:56.909Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699e66789e0a1bc93cafb8fa"
+  },
+  "type": "chi",
+  "amount": 800000,
+  "date": {
+    "$date": "2025-12-26T00:00:00.000Z"
+  },
+  "category": "entertainment",
+  "note": "",
+  "username": "spendwise123",
+  "createdAt": {
+    "$date": "2026-02-25T03:03:20.013Z"
+  },
+  "__v": 0
+}]

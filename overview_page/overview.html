@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/overview_page/overview.css">
     <link rel="stylesheet" href="/navbar/sidebar.css">
+    <link rel="stylesheet" href="/navbar/loader.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
+    <div id="page-loader" class="page-loader">
+        <div class="spinner"></div>
+    </div>
     <div id="sidebar"></div>
     <div class="overview">
         <div class="title">
@@ -54,7 +58,7 @@
                     <p class="value-card">
                         <span id="cash">1.000</span>đ
                     </p>
-                </div> 
+                </div>
             </div>
 
             <div class="chart">
