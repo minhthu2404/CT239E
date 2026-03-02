@@ -44,6 +44,6 @@ fetch("../navbar/sidebar.html")
     if (pageLoader) {
       setTimeout(() => {
         pageLoader.classList.add("fade-out");
-      }, 400);
+      }, 300);
     }
   });
