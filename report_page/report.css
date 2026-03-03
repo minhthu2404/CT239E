@@ -58,7 +58,7 @@ div.card {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 div.card>div {
@@ -76,7 +76,7 @@ div.card>div:hover {
 }
 
 p.title-card {
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -105,6 +105,11 @@ span.icon {
     color: #E73B55;
 }
 
+.trophy-svg {
+    background-color: #fffbeb;
+    color: #fbdf3b;
+}
+
 p.value-card {
     font-size: 35px;
     font-family: Montserrat;
@@ -123,7 +128,6 @@ div.chart {
 
 div.chart>div {
     position: relative;
-    /*Chart.js responsive*/
     border-radius: 10px;
     height: 25em;
     width: 100%;
@@ -134,4 +138,33 @@ div.chart>div {
 
 div.chart>div:hover {
     transform: translateY(-1%);
+}
+
+/* Định dạng chi tiết giao dịch */
+
+div.detail-transaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+}
+
+div.detail-transaction>p{
+    position: relative;
+    right: 42%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div.detail-transaction>div {
+    border-radius: 10px;
+    height: 25em;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: transform 0.3s;
 }

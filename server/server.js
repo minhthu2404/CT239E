@@ -100,7 +100,7 @@ app.post('/api/transactions', async (req, res) => {
     date: req.body.date,
     category: req.body.category,
     note: req.body.note,
-    username: req.body.username // Save username
+    username: req.body.username 
   });
 
   try {

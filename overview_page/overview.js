@@ -149,7 +149,7 @@ function renderDoughnutChart(transactions) {
             }
         }
     });
-}
+} 
 
 function renderLineChart(transactions) {
     // Sắp xếp giao dịch theo ngày
