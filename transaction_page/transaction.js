@@ -139,9 +139,46 @@ async function loadTransactions() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user || !user.username) return;
 
-        const response = await fetch(`http://localhost:3000/api/transactions?username=${user.username}`);
+        const dateFilter = document.getElementById('search-date') ? document.getElementById('search-date').value : '';
+        const categoryFilter = document.getElementById('search-category') ? document.getElementById('search-category').value : '';
+        const noteFilter = document.getElementById('search-note') ? document.getElementById('search-note').value : '';
+
+        let url = `http://localhost:3000/api/transactions?username=${user.username}`;
+        if (dateFilter) url += `&date=${encodeURIComponent(dateFilter)}`;
+        if (categoryFilter) url += `&category=${encodeURIComponent(categoryFilter)}`;
+        if (noteFilter) url += `&note=${encodeURIComponent(noteFilter)}`;
+
+        const response = await fetch(url);
         if (!response.ok) throw new Error('Failed to load transactions');
-        const transactions = await response.json();
+        let transactions = await response.json();
+
+        // Lọc thêm trên client để đảm bảo tìm kiếm ghi chú hoạt động ngay cả khi backend không thay đổi
+        if (noteFilter) {
+            const lowerNote = noteFilter.toLowerCase();
+            transactions = transactions.filter(t => t.note && t.note.toLowerCase().includes(lowerNote));
+        }
+
+        // Xử lý sắp xếp trên client
+        const sortOpt = document.getElementById('sort-opt');
+
+        transactions.sort((a, b) => {
+            const dateA = new Date(a.date).getTime();
+            const dateB = new Date(b.date).getTime();
+
+            if (sortOpt && sortOpt.value === 'amount') {
+                // Lọc theo 'Số tiền': Ưu tiên số tiền lớn nhất, nếu cùng số tiền thì theo ngày mới nhất
+                if (b.amount !== a.amount) {
+                    return b.amount - a.amount;
+                }
+                return dateB - dateA;
+            } else {
+                // Lọc theo 'Ngày' (Mặc định): Ưu tiên ngày mới nhất, nếu cùng ngày thì số tiền lớn nhất
+                if (dateB !== dateA) {
+                    return dateB - dateA;
+                }
+                return b.amount - a.amount;
+            }
+        });
 
         const list = document.getElementById('history-list');
         list.innerHTML = '';
@@ -186,6 +223,23 @@ async function loadTransactions() {
         console.error('Error loading transactions:', t);
     }
 }
+
+// Lắng nghe sự kiện tìm kiếm và sắp xếp
+const searchNoteObj = document.getElementById('search-note');
+if (searchNoteObj) {
+    searchNoteObj.addEventListener('input', () => {
+        clearTimeout(window.searchTimeout);
+        window.searchTimeout = setTimeout(loadTransactions, 300);
+    });
+}
+const searchDateObj = document.getElementById('search-date');
+if (searchDateObj) searchDateObj.addEventListener('change', loadTransactions);
+
+const searchCategoryObj = document.getElementById('search-category');
+if (searchCategoryObj) searchCategoryObj.addEventListener('change', loadTransactions);
+
+const sortOptObj = document.getElementById('sort-opt');
+if (sortOptObj) sortOptObj.addEventListener('change', loadTransactions);
 
 // Gọi tin khi trang tải xong
 loadTransactions();

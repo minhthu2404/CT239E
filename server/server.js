@@ -80,12 +80,24 @@ app.get('/api/user/:username', async (req, res) => {
 
 // Lấy danh sách giao dịch
 app.get('/api/transactions', async (req, res) => {
-  const { username } = req.query;
+  const { username, date, category, note } = req.query;
   if (!username) {
     return res.status(400).json({ message: 'Missing username query parameter' });
   }
   try {
-    const transactions = await Transaction.find({ username }).sort({ date: -1 });
+    let query = { username };
+
+    if (date) {
+      query.date = date;
+    }
+    if (category) {
+      query.category = category;
+    }
+    if (note) {
+      query.note = { $regex: note, $options: 'i' };
+    }
+
+    const transactions = await Transaction.find(query).sort({ date: -1 });
     res.json(transactions);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -100,7 +112,7 @@ app.post('/api/transactions', async (req, res) => {
     date: req.body.date,
     category: req.body.category,
     note: req.body.note,
-    username: req.body.username 
+    username: req.body.username
   });
 
   try {

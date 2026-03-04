@@ -76,12 +76,36 @@
         </div>
 
 
-        <div class="tool">
+        <div class="tool" style="gap: 15px; flex-wrap: wrap;">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input class="search-input" type="text" placeholder="Tìm kiếm giao dịch">
+                <input id="search-note" class="search-input" type="text" placeholder="Tìm kiếm ghi chú">
             </div>
-            <select id="sort-opt">
+            <input id="search-date" type="date" title="Ngày giao dịch"
+                style="padding: 0 15px; height: 45px; border-radius: 15px; border: 1px solid #151565; outline: none; background-color: white; font-size: 16px; font-family: inherit; color: #151565; cursor: pointer;">
+            <select id="search-category" title="Phân loại chi tiêu"
+                style="padding: 0 15px; height: 45px; border-radius: 15px; border: 1px solid #151565; outline: none; background-color: white; font-size: 16px; font-family: inherit; color: #151565; cursor: pointer;">
+                <option value="">Tất cả danh mục</option>
+                <optgroup label="Thu nhập">
+                    <option value="salary">Lương</option>
+                    <option value="bonus">Thưởng</option>
+                    <option value="interest">Lãi suất</option>
+                    <option value="sale">Bán đồ</option>
+                    <option value="other">Khác</option>
+                </optgroup>
+                <optgroup label="Chi tiêu">
+                    <option value="food">Ăn uống</option>
+                    <option value="movement">Di chuyển</option>
+                    <option value="house">Nhà cửa</option>
+                    <option value="shopping">Mua sắm</option>
+                    <option value="entertainment">Giải trí</option>
+                    <option value="health">Sức khỏe</option>
+                    <option value="education">Giáo dục</option>
+                    <option value="gift">Quà tặng</option>
+                    <option value="other">Khác</option>
+                </optgroup>
+            </select>
+            <select id="sort-opt" title="Sắp xếp">
                 <option value="date">Gần đây nhất</option>
                 <option value="amount">Số tiền lớn nhất</option>
             </select>
