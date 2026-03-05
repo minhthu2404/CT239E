@@ -157,6 +157,8 @@ i {
 #name-category{
     color: #5454dd;
     display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 26px;
     font-weight: bolder;
     justify-content: center;
