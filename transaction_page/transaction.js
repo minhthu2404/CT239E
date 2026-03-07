@@ -4,9 +4,43 @@ const overlay = document.getElementById("overlay");
 const formPopup = document.getElementById("formPopup");
 const transactionForm = document.getElementById("transactionForm");
 
+let editTransactionId = null;
+
 btn.onclick = function () {
     overlay.classList.remove("hidden");
     formPopup.classList.remove("hidden");
+    document.querySelector('.add-title').textContent = "Thêm giao dịch mới";
+};
+
+window.editTransaction = function (t) {
+    document.querySelector('.add-title').textContent = "Sửa giao dịch";
+    editTransactionId = t._id;
+    document.querySelector(`input[name="type"][value="${t.type}"]`).checked = true;
+    updateCategories(t.type);
+    document.getElementById('amount').value = t.amount;
+    document.getElementById('input-date').value = t.date.substring(0, 10);
+    document.getElementById('opt-category').value = t.category;
+    document.getElementById('input-note').value = t.note || '';
+
+    overlay.classList.remove("hidden");
+    formPopup.classList.remove("hidden");
+};
+
+window.deleteTransaction = function (id) {
+    if (confirm("Bạn có chắc chắn muốn xóa giao dịch này?")) {
+        fetch(`http://localhost:3000/api/transactions/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert("Đã xóa giao dịch!");
+                loadTransactions();
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Có lỗi xảy ra khi xóa.");
+            });
+    }
 };
 
 // bấm nút Hủy
@@ -30,7 +64,7 @@ const categories = {
         { value: "bonus", text: "Thưởng" },
         { value: "interest", text: "Lãi suất" },
         { value: "sale", text: "Bán đồ" },
-        { value: "other", text: "Khác" }
+        { value: "other_thu", text: "Khác" }
     ],
     chi: [
         { value: "food", text: "Ăn uống" },
@@ -41,7 +75,7 @@ const categories = {
         { value: "health", text: "Sức khỏe" },
         { value: "education", text: "Giáo dục" },
         { value: "gift", text: "Quà tặng" },
-        { value: "other", text: "Khác" }
+        { value: "other_chi", text: "Khác" }
     ]
 };
 
@@ -73,6 +107,8 @@ function closeForm() {
     overlay.classList.add("hidden");
     formPopup.classList.add("hidden");
     transactionForm.reset();
+    editTransactionId = null;
+    document.querySelector('.add-title').textContent = "Thêm giao dịch mới";
     // Reset về danh mục mặc định sau khi reset form
     setTimeout(() => {
         const checkedType = document.querySelector('input[name="type"]:checked');
@@ -109,8 +145,13 @@ transactionForm.addEventListener('submit', function (e) {
         username: user.username
     };
 
-    fetch('http://localhost:3000/api/transactions', {
-        method: 'POST',
+    const url = editTransactionId
+        ? `http://localhost:3000/api/transactions/${editTransactionId}`
+        : 'http://localhost:3000/api/transactions';
+    const method = editTransactionId ? 'PUT' : 'POST';
+
+    fetch(url, {
+        method: method,
         headers: {
             'Content-Type': 'application/json'
         },
@@ -123,7 +164,7 @@ transactionForm.addEventListener('submit', function (e) {
             return response.json();
         })
         .then(data => {
-            alert("Thêm giao dịch thành công!");
+            alert(editTransactionId ? "Sửa giao dịch thành công!" : "Thêm giao dịch thành công!");
             closeForm();
             loadTransactions();
         })
@@ -155,7 +196,19 @@ async function loadTransactions() {
         // Lọc thêm trên client để đảm bảo tìm kiếm ghi chú hoạt động ngay cả khi backend không thay đổi
         if (noteFilter) {
             const lowerNote = noteFilter.toLowerCase();
-            transactions = transactions.filter(t => t.note && t.note.toLowerCase().includes(lowerNote));
+            transactions = transactions.filter(t => {
+                let catText = t.category;
+                for (const type in categories) {
+                    const found = categories[type].find(c => c.value === t.category);
+                    if (found) {
+                        catText = found.text;
+                        break;
+                    }
+                }
+                const matchNote = t.note && t.note.toLowerCase().includes(lowerNote);
+                const matchCategory = catText && catText.toLowerCase().includes(lowerNote);
+                return matchNote || matchCategory;
+            });
         }
 
         // Xử lý sắp xếp trên client
@@ -208,14 +261,36 @@ async function loadTransactions() {
             const color = isThu ? '#1D8B6E' : '#E73B55';
 
             item.innerHTML = `
-                <div class="info" style="display: flex; flex-direction: column; gap: 6px;">
+                <div class="info" style="display: flex; flex-direction: column; gap: 6px; flex: 1;">
                     <div class="cat-name" style="font-weight: bold; font-family: Montserrat;">${catText}</div>
                     <div class="date" style="font-size: 0.9em; color: gray;">${date}</div>
                     <div class="note-text" style="font-size: 0.8em; color: #555;">${t.note || ''}</div>
                 </div>
-                <div class="amount" style="color: ${color}; font-weight: 400;">
+                <div class="amount" style="color: ${color}; font-weight: 400; text-align: right; padding-right: 15px;">
                     ${isThu ? '+' : '-'}${amount}
                 </div>`;
+
+            const actions = document.createElement('div');
+            actions.className = 'actions';
+            actions.style.display = 'flex';
+            actions.style.gap = '10px';
+
+            const editBtn = document.createElement('button');
+            editBtn.innerHTML = '<i class="fa-solid fa-pencil"></i>';
+            editBtn.className = "action-btn";
+            editBtn.onclick = () => window.editTransaction(t);
+            editBtn.title = "Sửa";
+
+            const delBtn = document.createElement('button');
+            delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+            delBtn.className = "action-btn delete";
+            delBtn.onclick = () => window.deleteTransaction(t._id);
+            delBtn.title = "Xóa";
+
+            actions.appendChild(editBtn);
+            actions.appendChild(delBtn);
+
+            item.appendChild(actions);
             list.appendChild(item);
         });
 

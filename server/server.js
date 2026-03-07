@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const Transaction = require('./models/Transaction');
 const User = require('./models/User');
+const Budget = require('./models/Budget');
 
 const app = express();
 const PORT = 3000;
@@ -93,9 +94,10 @@ app.get('/api/transactions', async (req, res) => {
     if (category) {
       query.category = category;
     }
-    if (note) {
-      query.note = { $regex: note, $options: 'i' };
-    }
+    // Remove backend note filter so frontend can filter by both note and category name
+    // if (note) {
+    //   query.note = { $regex: note, $options: 'i' };
+    // }
 
     const transactions = await Transaction.find(query).sort({ date: -1 });
     res.json(transactions);
@@ -118,6 +120,78 @@ app.post('/api/transactions', async (req, res) => {
   try {
     const newTransaction = await transaction.save();
     res.status(201).json(newTransaction);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// Cập nhật 1 giao dịch
+app.put('/api/transactions/:id', async (req, res) => {
+  try {
+    const updatedTransaction = await Transaction.findByIdAndUpdate(
+      req.params.id,
+      {
+        type: req.body.type,
+        amount: req.body.amount,
+        date: req.body.date,
+        category: req.body.category,
+        note: req.body.note,
+      },
+      { new: true }
+    );
+    if (!updatedTransaction) {
+      return res.status(404).json({ message: 'Không tìm thấy giao dịch' });
+    }
+    res.json(updatedTransaction);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// Xóa 1 giao dịch
+app.delete('/api/transactions/:id', async (req, res) => {
+  try {
+    const deletedTransaction = await Transaction.findByIdAndDelete(req.params.id);
+    if (!deletedTransaction) {
+      return res.status(404).json({ message: 'Không tìm thấy giao dịch' });
+    }
+    res.json({ message: 'Đã xóa giao dịch' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Lấy danh sách ngân sách
+app.get('/api/budgets', async (req, res) => {
+  const { username, month } = req.query;
+  if (!username || !month) {
+    return res.status(400).json({ message: 'Missing username or month query parameter' });
+  }
+  try {
+    const budgets = await Budget.find({ username, month });
+    res.json(budgets);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Thiết lập/Cập nhật ngân sách
+app.post('/api/budgets', async (req, res) => {
+  const { username, category, month, amount } = req.body;
+  if (!username || !category || !month || amount === undefined) {
+    return res.status(400).json({ message: 'Vui lòng cung cấp đủ thông tin' });
+  }
+
+  try {
+    let budget = await Budget.findOne({ username, category, month });
+    if (budget) {
+      budget.amount = amount;
+      await budget.save();
+    } else {
+      budget = new Budget({ username, category, month, amount });
+      await budget.save();
+    }
+    res.status(200).json(budget);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
