@@ -193,7 +193,8 @@ function renderLineChart(transactions) {
                     borderColor: '#1D8B6E',
                     backgroundColor: 'rgba(29, 139, 110, 0.1)',
                     tension: 0.3,
-                    fill: true
+                    fill: true,
+                    tension: 0.4
                 },
                 {
                     label: 'Chi tiêu',
@@ -201,7 +202,8 @@ function renderLineChart(transactions) {
                     borderColor: '#E73B55',
                     backgroundColor: 'rgba(231, 59, 85, 0.1)',
                     tension: 0.3,
-                    fill: true
+                    fill: true,
+                    tension: 0.4
                 }
             ]
         },

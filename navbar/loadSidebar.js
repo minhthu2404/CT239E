@@ -36,6 +36,7 @@ fetch("../navbar/sidebar.html")
       logoutBtn.addEventListener('click', (e) => {
         e.preventDefault();
         localStorage.removeItem('user');
+        window.location.href = logoutBtn.href;
       });
     }
 

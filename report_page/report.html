@@ -17,8 +17,11 @@
     </div>
     <div id="sidebar"></div>
     <div class="report">
-        <div class="title">
-            <h1>Báo cáo chi tiết</h1>
+        <div class="header">
+            <div class="title">
+                <h1>Báo cáo chi tiết</h1>
+                <p>Phân tích chi tiết thói quen chi tiêu của bạn</p>
+            </div>
             <select id="opt">
                 <option value="1">Tháng 1</option>
                 <option value="2">Tháng 2</option>
@@ -31,34 +34,12 @@
                 <option value="9">Tháng 9</option>
                 <option value="10">Tháng 10</option>
                 <option value="11">Tháng 11</option>
-                <option value="12" >Tháng 12</option>
+                <option value="12">Tháng 12</option>
             </select>
         </div>
         <div class="content">
             <div class="card">
-                <div id="card-1">
-                    <p class="title-card">
-                        <span class="icon wallet-svg">
-                            <i class="fa-duotone fa-solid fa-wallet"></i>
-                        </span>
-                        Số dư tháng
-                    </p>
-                    <p class="value-card">
-                        <span id="cash">1.200.000</span>đ
-                    </p>
-                </div>
-                <div id="card-2">
-                    <p class="title-card">
-                        <span class="icon arrowup-svg">
-                            <i class="fa-sharp fa-solid fa-arrow-trend-up"></i>
-                        </span>
-                        Tổng thu nhập
-                    </p>
-                    <p class="value-card">
-                        <span id="cash">1.200.000</span>đ
-                    </p>
-                </div>
-                <div id="card-3">
+                <div class="small-card" id="card-1">
                     <p class="title-card">
                         <span class="icon arrowdown-svg">
                             <i class="fa-sharp fa-solid fa-arrow-trend-down"></i>
@@ -66,10 +47,27 @@
                         Tổng chi tiêu
                     </p>
                     <p class="value-card">
-                        <span id="cash">1.000</span>đ
+                        <span id="cash">0</span>đ
+                    </p>
+                    <p class="note chitieu">
+                        +<span class="value-note">0</span>% so với tháng trước
                     </p>
                 </div>
-                <div id="card-4">
+                <div class="small-card" id="card-2">
+                    <p class="title-card">
+                        <span class="icon arrowup-svg">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                        Trung bình ngày
+                    </p>
+                    <p class="value-card">
+                        <span id="cash">0</span>đ
+                    </p>
+                    <p class="note trungbinh">
+                        -<span class="value-note">0</span>% so với tháng trước
+                    </p>
+                </div>
+                <div class="small-card" id="card-3">
                     <p class="title-card">
                         <span class="icon trophy-svg">
                             <i class="fa fa-trophy" aria-hidden="true"></i>
@@ -77,26 +75,65 @@
                         Danh mục lớn nhất
                     </p>
                     <p class="value-card">
-                        <span id="cash">Ăn uống</span>
+                        <span id="cash">...</span>
+                    </p>
+                    <p class="note danhmuc">
+                        Chiếm <span class="value-note">0</span>% tổng chi tiêu
                     </p>
                 </div>
             </div>
 
-            <div class="chart">
-                <div id="doughnut-chart-container">
-                    <canvas id="doughnut-chart"></canvas>
+            <div class="chart-section">
+                <div class="trend-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3>Xu hướng chi tiêu</h3>
+                            <p>Biến động chi tiêu trong 4 tuần qua</p>
+                        </div>
+                        <div class="card-options">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                    </div>
+                    <div class="trend-chart-wrapper">
+                        <canvas id="trendChart"></canvas>
+                    </div>
                 </div>
-                <div id="line-chart-container">
-                    <canvas id="line-chart"></canvas>
+                <div class="allocation-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3>Phân bổ danh mục</h3>
+                            <p>Top 4 danh mục chi tiêu cao nhất</p>
+                        </div>
+                        <div class="card-options">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                    </div>
+                    <div class="allocation-list" id="allocationList">
+                        <!--Thanh tiến trình-->
+                    </div>
                 </div>
             </div>
-            <div class="detail-transaction">
-                <p>Chi tiết giao dịch</p>
-                <div class="detail-content"></div>
+            <div class="transaction-table-card">
+                <div class="table-card-header">
+                    <h3>Chi tiết giao dịch</h3>
+                </div>
+                <div class="transaction-table">
+                    <div class="table-header">
+                        <div class="col-date">Ngày</div>
+                        <div class="col-cat">Danh mục</div>
+                        <div class="col-amount">Số tiền</div>
+                        <div class="col-note">Ghi chú</div>
+                    </div>
+                    <div id="transactionList" class="table-body">
+                        <!-- Chi tiết giao dịch -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../navbar/loadSidebar.js"></script>
+    <script src="/report_page/report.js"></script>
 </body>
 
 </html>
