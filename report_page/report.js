@@ -11,27 +11,29 @@ const categoriesMap = {
     'health': { text: 'Sức khỏe', color: '#00BCD4', bg: '#E0F7FA', icon: '<i class="fa-solid fa-heart-pulse"></i>' },
     'education': { text: 'Giáo dục', color: '#3F51B5', bg: '#E8EAF6', icon: '<i class="fa-solid fa-book"></i>' },
     'gift': { text: 'Quà tặng', color: '#E91E63', bg: '#FCE4EC', icon: '<i class="fa-solid fa-gift"></i>' },
-    'other': { text: 'Khác', color: '#9E9E9E', bg: '#F5F5F5', icon: '<i class="fa-solid fa-ellipsis"></i>' },
-    // Thu (để phòng khi hiển thị chung, dù chủ yếu biểu đồ báo cáo chi tiêu)
-    // 'salary': { text: 'Lương', color: '#1D8B6E', bg: '#E8F5EE', icon: '<i class="fa-solid fa-money-bill-wave"></i>' },
-    // 'bonus': { text: 'Thưởng', color: '#1D8B6E', bg: '#E8F5EE', icon: '<i class="fa-solid fa-money-bill-wave"></i>' },
-    // 'interest': { text: 'Lãi suất', color: '#1D8B6E', bg: '#E8F5EE', icon: '<i class="fa-solid fa-piggy-bank"></i>' },
-    // 'sale': { text: 'Bán đồ', color: '#1D8B6E', bg: '#E8F5EE', icon: '<i class="fa-solid fa-shop"></i>' }
+    'other_chi': { text: 'Khác', color: '#9E9E9E', bg: '#F5F5F5', icon: '<i class="fa-solid fa-ellipsis"></i>' }
 };
 
 document.addEventListener("DOMContentLoaded", function () {
     const monthSelect = document.getElementById("opt");
+    const monthDisplay = document.getElementById("month-display");
 
-    // Set mặc định sang tháng hiện tại của năm nay
-    const currentMonth = new Date().getMonth() + 1;
-    monthSelect.value = currentMonth;
+    // Lấy ngày hiện tại để set giá trị tháng/năm mặc định
+    const now = new Date();
+    const currentMonthStr = String(now.getMonth() + 1).padStart(2, '0');
+    monthSelect.value = `${now.getFullYear()}-${currentMonthStr}`;
+    monthDisplay.innerHTML = `<i class="fa-regular fa-calendar" style="margin-right: 8px;"></i>Tháng ${now.getMonth() + 1}/${now.getFullYear()}`;
 
     // Load dữ liệu lần đầu
     loadReportData();
 
-    // Lắng nghe sự kiện đổi tháng
+    // Lắng nghe sự kiện đổi tháng/năm
     monthSelect.addEventListener("change", function () {
-        processData(parseInt(this.value));
+        if (this.value) {
+            const parts = this.value.split('-');
+            monthDisplay.innerHTML = `<i class="fa-regular fa-calendar" style="margin-right: 8px;"></i>Tháng ${parseInt(parts[1])}/${parts[0]}`;
+        }
+        processData(this.value);
     });
 });
 
@@ -47,21 +49,21 @@ async function loadReportData() {
         if (!response.ok) throw new Error('Không thể tải giao dịch');
         allTransactions = await response.json();
 
-        // Xử lý dữ liệu cho tháng đang chọn
-        const selectedMonth = parseInt(document.getElementById("opt").value);
-        processData(selectedMonth);
+        // Xử lý dữ liệu cho tháng/năm đang chọn
+        const selectedMonthVal = document.getElementById("opt").value;
+        processData(selectedMonthVal);
 
     } catch (error) {
         console.error('Lỗi khi tải dữ liệu báo cáo:', error);
     }
 }
 
-function processData(month) {
-    if (allTransactions.length === 0) return;
+function processData(monthYearStr) {
+    if (allTransactions.length === 0 || !monthYearStr) return;
 
-    // Tìm năm của giao dịch mới nhất để làm mốc thay vì lấy năm hiện tại (do dữ liệu có thể cũ)
-    let maxDate = new Date(Math.max(...allTransactions.map(t => new Date(t.date))));
-    const currentYear = maxDate.getFullYear();
+    const parts = monthYearStr.split('-');
+    const currentYear = parseInt(parts[0]);
+    const month = parseInt(parts[1]);
 
     // Lọc giao dịch tháng được chọn và tháng trước đó
     const currentMonthTransactions = allTransactions.filter(t => {
@@ -114,7 +116,7 @@ function updateSummaryCards(currTx, prevTx, month, year) {
             topCatId = cat;
         }
     }
-    const topCatName = topCatId ? (categoriesMap[topCatId] ? categoriesMap[topCatId].text : topCatId) : "Chưa có";
+    const topCatName = topCatId ? (categoriesMap[topCatId] ? categoriesMap[topCatId].text : topCatId) : "---";
     const topCatPercent = currExpense > 0 ? ((topCatAmount / currExpense) * 100).toFixed(0) : 0;
 
     // Tháng trước (Để tính % thay đổi)
@@ -125,7 +127,7 @@ function updateSummaryCards(currTx, prevTx, month, year) {
     const daysInPrevMonth = new Date(year, month - 1, 0).getDate();
     const prevAvgPerDay = prevExpense / daysInPrevMonth;
 
-    // Render HTML Cards (Card 1, 2, 3)
+    // Hiển thị thẻ (Card 1, 2, 3)
     const card1Value = document.querySelector('#card-1 .value-card span');
     const card1NoteVal = document.querySelector('#card-1 .note .value-note');
     const card1NoteText = document.querySelector('#card-1 .note');
@@ -307,7 +309,7 @@ function renderTransactionList(currTx) {
     if (!transactionList) return;
 
     if (currTx.length === 0) {
-        transactionList.innerHTML = '<div style="padding: 20px; text-align: center; color: #888;">Chưa có giao dịch nào trong tháng này</div>';
+        transactionList.innerHTML = '<div style="padding: 20px; text-align: center; color: #888;">Chưa có giao dịch nào</div>';
         return;
     }
 

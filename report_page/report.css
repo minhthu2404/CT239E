@@ -28,7 +28,13 @@ body {
     text-transform: uppercase;
 }
 
-#opt {
+.month-picker-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+#month-display {
     font-size: 18px;
     font-family: Inter;
     font-weight: 500;
@@ -36,6 +42,21 @@ body {
     border: 2px solid #6e6ee1;
     padding: 5px 15px;
     border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    min-width: 150px;
+    text-align: center;
+    pointer-events: none;
+}
+
+#opt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
 }
 
 .report {
@@ -260,13 +281,6 @@ p.danhmuc {
     font-weight: 600;
 }
 
-.view-all-link {
-    color: #4285F4;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-}
-
 .transaction-table {
     width: 100%;
     margin-bottom: 20px;
@@ -274,7 +288,8 @@ p.danhmuc {
 
 .table-header {
     display: grid;
-    grid-template-columns: 1.5fr 2fr 1.5fr 1fr;
+    /* grid-template-columns: 1.5fr 2fr 1.5fr 1fr; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 15px 0;
     border-bottom: 1px solid #f0f0f0;
     color: #444;
@@ -284,7 +299,8 @@ p.danhmuc {
 
 .table-row {
     display: grid;
-    grid-template-columns: 1.5fr 2fr 1.5fr 1fr;
+    /* grid-template-columns: 1.5fr 2fr 1.5fr 1fr; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 20px 0;
     border-bottom: 1px solid #f9f9f9;
     align-items: center;
@@ -302,7 +318,7 @@ p.danhmuc {
 }
 
 .col-date {
-    color: #666;
+    color: #444;
 }
 
 .trans-info {
@@ -332,15 +348,15 @@ p.danhmuc {
 }
 
 .col-acc {
-    color: #888;
+    color: #444;
 }
 
 .col-amount {
-    font-size: 15px;
+    color: #444;
 }
 
 .col-note {
-    color: #666;
+    color: #444;
 }
 
 .table-card-footer {

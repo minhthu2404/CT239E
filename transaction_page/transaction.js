@@ -164,7 +164,16 @@ transactionForm.addEventListener('submit', function (e) {
             return response.json();
         })
         .then(data => {
-            alert(editTransactionId ? "Sửa giao dịch thành công!" : "Thêm giao dịch thành công!");
+            const toast = document.getElementById('success-toast');
+            if (toast) {
+                const isEdit = !!editTransactionId;
+                document.getElementById('toast-message').textContent = isEdit ? "Sửa giao dịch thành công!" : "Thêm giao dịch thành công!";
+                toast.style.display = 'flex';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            }
+
             closeForm();
             loadTransactions();
         })

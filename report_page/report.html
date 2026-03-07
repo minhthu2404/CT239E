@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/report_page/report.css">
     <link rel="stylesheet" href="/navbar/sidebar.css">
     <link rel="stylesheet" href="/navbar/loader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -22,20 +23,10 @@
                 <h1>Báo cáo chi tiết</h1>
                 <p>Phân tích chi tiết thói quen chi tiêu của bạn</p>
             </div>
-            <select id="opt">
-                <option value="1">Tháng 1</option>
-                <option value="2">Tháng 2</option>
-                <option value="3">Tháng 3</option>
-                <option value="4">Tháng 4</option>
-                <option value="5">Tháng 5</option>
-                <option value="6">Tháng 6</option>
-                <option value="7">Tháng 7</option>
-                <option value="8">Tháng 8</option>
-                <option value="9">Tháng 9</option>
-                <option value="10">Tháng 10</option>
-                <option value="11">Tháng 11</option>
-                <option value="12">Tháng 12</option>
-            </select>
+            <div class="month-picker-wrapper">
+                <div id="month-display"><i class="fa-regular fa-calendar" style="margin-right: 8px;"></i>Tháng ...</div>
+                <input type="month" id="opt" onclick="this.showPicker()">
+            </div>
         </div>
         <div class="content">
             <div class="card">
