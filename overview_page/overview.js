@@ -186,7 +186,7 @@ function renderLineChart(transactions) {
         type: 'line',
         data: {
             labels: displayDates,
-            datasets: [
+            datasets: [ 
                 {
                     label: 'Thu nhập',
                     data: incomeData,
@@ -230,15 +230,15 @@ function renderLineChart(transactions) {
             },
             scales: {
                 x: {
-                    ticks: {
-                        color: '#6e6ee1'
-                    }
+                    ticks: {color: '#6e6ee1'},
+                    grid: {display: false}
                 },
                 y: {
                     ticks: {
                         color: '#6e6ee1'
                     },
-                    beginAtZero: true
+                    beginAtZero: true,
+                    grid: {display: false}
                 }
             }
         }
