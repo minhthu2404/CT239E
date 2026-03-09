@@ -18,20 +18,22 @@
     <div id="sidebar"></div>
 
     <!-- Thẻ "Thêm thành công giao dịch"-->
-    <div id="success-toast"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.3); z-index: 9999; justify-content: center; align-items: center;">
-        <div
-            style="background-color: white; color: #1D8B6E; padding: 30px 50px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-size: 20px; font-weight: 600; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; transform: scale(0.8); animation: popUp 0.3s ease forwards;">
+    <div id="success-toast">
+        <div>
             <i class="fa-regular fa-circle-check" style="font-size: 50px; color: #1D8B6E;"></i>
             <span id="toast-message">Thêm giao dịch thành công!</span>
         </div>
-        <style>
-            @keyframes popUp {
-                to {
-                    transform: scale(1);
-                }
-            }
-        </style>
+    </div>
+     
+    <!--Biểu mẫu xác nhận xóa-->
+    <div id="confirm-deletion">
+        <div>
+            <p>Bạn xác nhận muốn xóa?</p>
+            <div class="delete-option">
+                <button>Không</button>
+                <button>Xóa</button>
+            </div>
+        </div>
     </div>
 
     <div class="transaction">
@@ -96,7 +98,7 @@
         <div class="tool" style="display: flex; gap: 15px; align-items: center;">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input id="search-note" class="search-input" type="text" placeholder="Tìm kiếm ghi chú">
+                <input id="search-note" class="search-input" type="text" placeholder="Tìm kiếm giao dịch">
             </div>
             <input id="search-date" type="date" title="Ngày giao dịch"
                 style="padding: 0 15px; height: 45px; border-radius: 15px; border: 1px solid #151565; outline: none; background-color: white; font-size: 16px; font-family: inherit; color: #151565; cursor: pointer;">

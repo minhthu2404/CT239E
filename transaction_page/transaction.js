@@ -26,21 +26,46 @@ window.editTransaction = function (t) {
     formPopup.classList.remove("hidden");
 };
 
+let currentDeleteId = null;
+const confirmDeletionPopup = document.getElementById('confirm-deletion');
+const cancelDeleteBtn = confirmDeletionPopup.querySelector('.delete-option button:first-child');
+const confirmDeleteBtn = confirmDeletionPopup.querySelector('.delete-option button:last-child');
+
 window.deleteTransaction = function (id) {
-    if (confirm("Bạn có chắc chắn muốn xóa giao dịch này?")) {
-        fetch(`http://localhost:3000/api/transactions/${id}`, {
-            method: 'DELETE'
+    currentDeleteId = id;
+    confirmDeletionPopup.style.display = 'flex';
+};
+
+cancelDeleteBtn.onclick = function () {
+    confirmDeletionPopup.style.display = 'none';
+    currentDeleteId = null;
+};
+
+confirmDeleteBtn.onclick = function () {
+    if (!currentDeleteId) return;
+
+    fetch(`http://localhost:3000/api/transactions/${currentDeleteId}`, {
+        method: 'DELETE'
+    })
+        .then(response => response.json())
+        .then(data => {
+            confirmDeletionPopup.style.display = 'none';
+            currentDeleteId = null;
+            const toast = document.getElementById('success-toast');
+            if (toast) {
+                document.getElementById('toast-message').textContent = "Xóa giao dịch thành công!";
+                toast.style.display = 'flex';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            }
+            
+            loadTransactions();
         })
-            .then(response => response.json())
-            .then(data => {
-                alert("Đã xóa giao dịch!");
-                loadTransactions();
-            })
-            .catch(err => {
-                console.error(err);
-                alert("Có lỗi xảy ra khi xóa.");
-            });
-    }
+        .catch(err => {
+            console.error(err);
+            alert("Có lỗi xảy ra khi xóa.");
+        });
 };
 
 // bấm nút Hủy
