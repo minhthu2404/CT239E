@@ -317,7 +317,7 @@ function renderTransactionList(currTx) {
     const sortedTx = [...currTx].filter(t => t.type === 'chi').sort((a, b) => new Date(b.date) - new Date(a.date));
 
     // Lấy tối đa 5 items
-    const recentTx = sortedTx.slice(0, 5);
+    const recentTx = sortedTx;
 
     let html = '';
     const fmt = new Intl.NumberFormat('vi-VN');
@@ -327,8 +327,8 @@ function renderTransactionList(currTx) {
         const dateStr = `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
 
         const catInfo = categoriesMap[t.category] || { text: t.category, color: '#9E9E9E', bg: '#F5F5F5', icon: '<i class="fa-solid fa-receipt"></i>' };
-        // const amountStr = (t.type === 'chi' ? '-' : '+') + fmt.format(t.amount) + ' đ';
-        const amountStr = '-' + fmt.format(t.amount) + ' đ';
+        const amountStr = (t.type === 'chi' ? '-' : '+') + fmt.format(t.amount) + ' đ';
+        // const amountStr = '-' + fmt.format(t.amount) + ' đ';
 
         html += `
             <div class="table-row">
