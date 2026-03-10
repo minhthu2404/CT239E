@@ -92,7 +92,8 @@ i {
     cursor: pointer;
 }
 
-.adjust {
+.adjust,
+.delete-budget {
     border: 0.5px solid #f1f1fb;
     border-radius: 50px;
     background-color: #f1f1fb;
@@ -106,6 +107,12 @@ i {
 .setup:hover {
     border: 0.5px solid #6e6ee1;
     background-color: #6e6ee1;
+    color: #ffffff;
+}
+
+.delete-budget:hover {
+    border: 0.5px solid #e73b55;
+    background-color: #e73b55;
     color: #ffffff;
 }
 

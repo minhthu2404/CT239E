@@ -76,6 +76,7 @@ function updateUI() {
 
         const budgetObj = currentBudgets.find(b => b.category === categoryValue);
         const adjustBtn = el.querySelector('.adjust');
+        const deleteBtn = el.querySelector('.delete-budget');
         const settingContainer = el.querySelector('.budget-setting');
 
         if (budgetObj) {
@@ -91,6 +92,7 @@ function updateUI() {
             const progressColor = percent > 90 ? '#E73B55' : (percent > 75 ? '#FF9800' : '#1D8B6E');
 
             adjustBtn.style.display = 'block';
+            if (deleteBtn) deleteBtn.style.display = 'block';
             settingContainer.innerHTML = `
                 <div class="budget-details">
                     <div class="budget-amounts">
@@ -110,8 +112,8 @@ function updateUI() {
                     
                     <div class="budget-status">
                         <div class="remaining">
-                            Còn lại: <span style="color: ${remaining >= 0 ? '#1D8B6E' : '#E73B55'}; font-weight: bold;">
-                                ${new Intl.NumberFormat('vi-VN').format(Math.abs(remaining))} đ ${remaining < 0 ? '(Vượt mức)' : ''}
+                            ${remaining >= 0 ? 'Còn lại:' : 'Vượt ngân sách:'} <span style="color: ${remaining >= 0 ? '#1D8B6E' : '#E73B55'}; font-weight: bold;">
+                                ${new Intl.NumberFormat('vi-VN').format(Math.abs(remaining))} đ
                             </span>
                         </div>
                         <div class="daily-avg">
@@ -122,6 +124,7 @@ function updateUI() {
             `;
         } else {
             adjustBtn.style.display = 'none';
+            if (deleteBtn) deleteBtn.style.display = 'none';
             settingContainer.innerHTML = `
                 <p>Chưa thiết lập ngân sách</p>
                 <button type="button" class="setup" data-category="${categoryName}">Thiết lập ngay</button>
@@ -131,6 +134,7 @@ function updateUI() {
 
     // Reattach event listeners for dynamic setup buttons
     attachFormOpeners();
+    attachDeleteButtons();
 }
 
 function openForm(categoryName, iconClass) {
@@ -167,6 +171,34 @@ function attachFormOpeners() {
             const category = this.dataset.category;
             const iconClass = this.closest('.budget').querySelector('.budget-title i').className;
             openForm(category, iconClass);
+        };
+    });
+}
+
+function attachDeleteButtons() {
+    const btn_delete = document.querySelectorAll(".delete-budget");
+
+    btn_delete.forEach(btn => {
+        btn.onclick = async function () {
+            if (!confirm("Bạn có chắc chắn muốn xóa thiết lập ngân sách này?")) return;
+            const categoryName = this.dataset.category;
+            const categoryValue = categoryMap[categoryName];
+            const user = JSON.parse(localStorage.getItem('user'));
+            const monthStr = getCurrentMonthStr();
+
+            try {
+                const res = await fetch(`http://localhost:3000/api/budgets?username=${user.username}&category=${categoryValue}&month=${monthStr}`, {
+                    method: 'DELETE'
+                });
+                if (res.ok) {
+                    loadBudgetData(); // Reload budgets and update UI
+                } else {
+                    alert("Lỗi khi xóa ngân sách.");
+                }
+            } catch (err) {
+                console.error("Error deleting budget:", err);
+                alert("Lỗi: " + err.message);
+            }
         };
     });
 }

@@ -197,6 +197,23 @@ app.post('/api/budgets', async (req, res) => {
   }
 });
 
+// Xóa ngân sách
+app.delete('/api/budgets', async (req, res) => {
+  const { username, category, month } = req.query;
+  if (!username || !category || !month) {
+    return res.status(400).json({ message: 'Missing username, category or month query parameter' });
+  }
+  try {
+    const deletedBudget = await Budget.findOneAndDelete({ username, category, month });
+    if (!deletedBudget) {
+      return res.status(404).json({ message: 'Không tìm thấy ngân sách' });
+    }
+    res.json({ message: 'Đã xóa ngân sách' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Khởi động server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
