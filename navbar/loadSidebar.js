@@ -47,4 +47,13 @@ fetch("../navbar/sidebar.html")
         pageLoader.classList.add("fade-out");
       }, 300);
     }
+    
+    // Load chat-ai script
+    if (!document.getElementById('injected-chat-ai')) {
+      const script = document.createElement("script");
+      script.id = "injected-chat-ai";
+      // Sử dụng đường dẫn tương đối và chống cache bản cũ bị lỗi cú pháp
+      script.src = "../navbar/chat-ai.js?v=" + new Date().getTime();
+      document.body.appendChild(script);
+    }
   });

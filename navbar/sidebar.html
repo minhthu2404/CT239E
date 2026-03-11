@@ -40,13 +40,49 @@
     <div class="user">
       <div class="username">
         <i class="fa-solid fa-user-circle"></i>
-        <span>Kim Jennie</span>
+        <span>Kim Yến</span>
       </div>
       <a class="logout" href="../welcome_page/welcome_spendwise.html">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
       </a>
     </div>
   </div>
+
+  <!--Chat Widget-->
+  <div id="chat-widget">
+        <div id="chat-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4Z"
+                    fill="currentColor" />
+                <path
+                    d="M12 6C8.69 6 6 8.69 6 12C6 15.31 8.69 18 12 18C15.31 18 18 15.31 18 12C18 8.69 15.31 6 12 6ZM12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16Z"
+                    fill="currentColor" />
+            </svg>
+            <span>Chat AI</span>
+        </div>
+        <div id="chat-window" class="hidden">
+            <div class="chat-header">
+                <h3>Trợ lý chi tiêu</h3>
+                <button id="close-chat">&times;</button>
+            </div>
+            <div id="chat-messages">
+                <div class="message bot">Chào bạn! Hôm nay tôi có thể giúp gì cho bạn?</div>
+            </div>
+            <form id="chat-form">
+                <input type="text" id="chat-input" placeholder="Hỏi tôi gì đó..." autocomplete="off">
+                <button type="submit">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </div>
+  </div>
+
+  <script src="chat-ai.js"></script>
 </body>
 
 </html>

@@ -214,6 +214,64 @@ app.delete('/api/budgets', async (req, res) => {
   }
 });
 
+
+// Chat with Ollama
+app.post('/api/chat', async (req, res) => {
+    const { prompt } = req.body;
+    try {
+        const budgets = await Budget.find({});
+        const transactions = await Transaction.find({});
+
+        const contextData = [
+            ...budgets.map(b => `- Ngân sách: ${b.category} (${b.month}) - Số tiền: ${b.amount}`),
+            ...transactions.map(t => `- Giao dịch: ${t.type} ${t.amount} cho ${t.category} vào ngày ${t.date} (${t.note || 'Không có mô tả'})`)
+        ];
+        const context = contextData.join('\n');
+
+        const systemPrompt = `Bạn là một trợ lý tài chính hữu ích. 
+                              Dưới đây là dữ liệu tài chính của người dùng:
+                              ${context}
+                              Vui lòng trả lời câu hỏi của người dùng dựa trên dữ liệu này.`;
+
+        // Ollama Endpoint
+        const apiUrl = `${process.env.OLLAMA_BASE_URL || 'http://127.0.0.1:11434'}/api/chat`;
+
+        const payload = {
+            model: process.env.AI_MODEL || 'llama3',
+            messages: [
+                { role: 'user', content: systemPrompt + '\n\nUser: ' + prompt }
+            ],
+            stream: false
+        };
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: config.headers,
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Ollama Native format
+        const botResponse = data.message ? data.message.content : data.response;
+
+        res.json({ response: botResponse });
+    } catch (error) {
+        console.error('Error calling AI service:', error.message);
+        res.status(500).json({ message: 'Error communicating with AI service' });
+    }
+});
+
 // Khởi động server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

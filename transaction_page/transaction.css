@@ -316,7 +316,7 @@ label {
     gap: 10px;
 }
 
-button {
+#transactionForm button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -335,7 +335,7 @@ button {
     padding: 10px;
 }
 
-button:hover {
+#transactionForm button:hover {
     box-shadow: inset 0 2px 4px #0000001a;
 }
 
