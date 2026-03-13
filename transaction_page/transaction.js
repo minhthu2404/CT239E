@@ -4,12 +4,18 @@ const overlay = document.getElementById("overlay");
 const formPopup = document.getElementById("formPopup");
 const transactionForm = document.getElementById("transactionForm");
 
+function setTodayDate() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById("input-date").value = today;
+}
+
 let editTransactionId = null;
 
 btn.onclick = function () {
     overlay.classList.remove("hidden");
     formPopup.classList.remove("hidden");
     document.querySelector('.add-title').textContent = "Thêm giao dịch mới";
+    setTodayDate();
 };
 
 window.editTransaction = function (t) {
@@ -134,6 +140,7 @@ function closeForm() {
     transactionForm.reset();
     editTransactionId = null;
     document.querySelector('.add-title').textContent = "Thêm giao dịch mới";
+    setTodayDate();
     // Reset về danh mục mặc định sau khi reset form
     setTimeout(() => {
         const checkedType = document.querySelector('input[name="type"]:checked');

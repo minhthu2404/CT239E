@@ -16,6 +16,18 @@
         <div class="spinner"></div>
     </div>
     <div id="sidebar"></div>
+
+    <!--Biểu mẫu xác nhận xóa-->
+    <div id="confirm-deletion" style="display: none;">
+        <div class="delete-box">
+            <p>Bạn có chắc muốn xóa thiết lập ngân sách này?</p>
+            <div class="delete-option">
+                <button type="button">Hủy</button>
+                <button type="button">Xóa</button>
+            </div>
+        </div>
+    </div>
+
     <div class="settings">
         <div class="settings-header">
             <h1 class="title">QUẢN LÝ NGÂN SÁCH</h1>
@@ -31,8 +43,8 @@
                     <div class="action-buttons" style="display: flex; gap: 8px;">
                         <button type="button" class="adjust" data-category="Ăn uống" title="Chỉnh sửa"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="delete-budget" data-category="Ăn uống" title="Xóa ngân sách" style="display: none;"><i
-                                class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="delete-budget" data-category="Ăn uống" title="Xóa ngân sách"
+                            style="display: none;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="budget-setting">
@@ -50,8 +62,8 @@
                     <div class="action-buttons" style="display: flex; gap: 8px;">
                         <button type="button" class="adjust" data-category="Di chuyển" title="Chỉnh sửa"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="delete-budget" data-category="Di chuyển" title="Xóa ngân sách" style="display: none;"><i
-                                class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="delete-budget" data-category="Di chuyển" title="Xóa ngân sách"
+                            style="display: none;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="budget-setting">
@@ -69,8 +81,8 @@
                     <div class="action-buttons" style="display: flex; gap: 8px;">
                         <button type="button" class="adjust" data-category="Nhà cửa" title="Chỉnh sửa"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="delete-budget" data-category="Nhà cửa" title="Xóa ngân sách" style="display: none;"><i
-                                class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="delete-budget" data-category="Nhà cửa" title="Xóa ngân sách"
+                            style="display: none;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="budget-setting">
@@ -88,8 +100,8 @@
                     <div class="action-buttons" style="display: flex; gap: 8px;">
                         <button type="button" class="adjust" data-category="Mua sắm" title="Chỉnh sửa"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="delete-budget" data-category="Mua sắm" title="Xóa ngân sách" style="display: none;"><i
-                                class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="delete-budget" data-category="Mua sắm" title="Xóa ngân sách"
+                            style="display: none;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="budget-setting">
@@ -107,8 +119,8 @@
                     <div class="action-buttons" style="display: flex; gap: 8px;">
                         <button type="button" class="adjust" data-category="Giải trí" title="Chỉnh sửa"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="delete-budget" data-category="Giải trí" title="Xóa ngân sách" style="display: none;"><i
-                                class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="delete-budget" data-category="Giải trí" title="Xóa ngân sách"
+                            style="display: none;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="budget-setting">
@@ -126,8 +138,8 @@
                     <div class="action-buttons" style="display: flex; gap: 8px;">
                         <button type="button" class="adjust" data-category="Sức khỏe" title="Chỉnh sửa"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="delete-budget" data-category="Sức khỏe" title="Xóa ngân sách" style="display: none;"><i
-                                class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="delete-budget" data-category="Sức khỏe" title="Xóa ngân sách"
+                            style="display: none;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="budget-setting">
@@ -145,8 +157,8 @@
                     <div class="action-buttons" style="display: flex; gap: 8px;">
                         <button type="button" class="adjust" data-category="Giáo dục" title="Chỉnh sửa"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="delete-budget" data-category="Giáo dục" title="Xóa ngân sách" style="display: none;"><i
-                                class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="delete-budget" data-category="Giáo dục" title="Xóa ngân sách"
+                            style="display: none;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="budget-setting">
@@ -164,8 +176,8 @@
                     <div class="action-buttons" style="display: flex; gap: 8px;">
                         <button type="button" class="adjust" data-category="Quà tặng" title="Chỉnh sửa"><i
                                 class="fa-solid fa-pencil"></i></button>
-                        <button type="button" class="delete-budget" data-category="Quà tặng" title="Xóa ngân sách" style="display: none;"><i
-                                class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="delete-budget" data-category="Quà tặng" title="Xóa ngân sách"
+                            style="display: none;"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="budget-setting">
@@ -181,7 +193,8 @@
             <form id="budget-form">
                 <div class="name">
                     <h1 id="form-title">Thiết lập ngân sách</h1>
-                    <div id="name-category"><i id="form-category-icon"></i> <span id="form-category-text">Tên danh mục</span></div>
+                    <div id="name-category"><i id="form-category-icon"></i> <span id="form-category-text">Tên danh
+                            mục</span></div>
                 </div>
                 <div class="form-input">
                     <label>Hạn mức chi tiêu (tháng)</label>

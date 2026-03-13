@@ -313,3 +313,104 @@ i {
     color: #1D8B6E;
     font-weight: 600;
 }
+
+/* Định dạng confirm deletion */
+
+#confirm-deletion {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#confirm-deletion > div {
+    background-color: #ebebff;
+    padding: 20px 30px;
+    border-radius: 10px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+
+    transform: scale(0.8);
+    animation: popUp 0.3s ease forwards;
+}
+
+#confirm-deletion p {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Montserrat;
+    color: #08083c;
+    margin: 0;
+}
+
+.delete-option {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+.delete-option button {
+    width: 120px;
+    height: 35px;
+
+    font-size: 18px;
+    font-family: Montserrat;
+    font-weight: bold;
+
+    border-radius: 5px;
+    cursor: pointer;
+
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirm-deletion .delete-option button:first-child {
+    background: #ffffff;
+    color: #08083c;
+    border: 1px solid #08083c;
+}
+
+#confirm-deletion .delete-option button:first-child:hover {
+    background: #e6e6f2;
+}
+
+#confirm-deletion .delete-option button:last-child {
+    background: #e73b55;
+    color: #ffffff;
+    border: none;
+}
+
+#confirm-deletion .delete-option button:last-child:hover {
+    background: #d02a42;
+    box-shadow: inset 0 2px 4px #0000001a;
+}
+
+/* Animation popup */
+
+@keyframes popUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
