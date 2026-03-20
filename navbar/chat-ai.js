@@ -45,10 +45,11 @@ chatForm.addEventListener ('submit', async (e) => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
     try {
-        const response = await fetch('/api/chat', {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const response = await fetch('http://localhost:3000/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt })
+            body: JSON.stringify({ prompt, username: user ? user.username : null })
         });
         const data = await response.json();
 

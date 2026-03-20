@@ -11,7 +11,8 @@ const categoriesMap = {
     'health': { text: 'Sức khỏe', color: '#00BCD4', bg: '#E0F7FA', icon: '<i class="fa-solid fa-heart-pulse"></i>' },
     'education': { text: 'Giáo dục', color: '#3F51B5', bg: '#E8EAF6', icon: '<i class="fa-solid fa-book"></i>' },
     'gift': { text: 'Quà tặng', color: '#E91E63', bg: '#FCE4EC', icon: '<i class="fa-solid fa-gift"></i>' },
-    'other_chi': { text: 'Khác', color: '#9E9E9E', bg: '#F5F5F5', icon: '<i class="fa-solid fa-ellipsis"></i>' }
+    'other_chi': { text: 'Khác', color: '#9E9E9E', bg: '#F5F5F5', icon: '<i class="fa-solid fa-ellipsis"></i>' },
+    'other': { text: 'Khác', color: '#9E9E9E', bg: '#F5F5F5', icon: '<i class="fa-solid fa-ellipsis"></i>' },
 };
 
 document.addEventListener("DOMContentLoaded", function () {
