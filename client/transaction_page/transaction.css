@@ -15,23 +15,25 @@ body {
 
 .transaction {
     margin-left: var(--sidebar-width);
-    width: calc(100% - var(--sidebar-width));
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 24px;
+    padding: 15px;
+    margin-bottom: 70px;
 }
 
 .transaction-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .transaction-header .title {
     color: #6e6ee1;
     font-family: Montserrat;
-    font-size: 60px;
+    font-size: 36px;
     padding-left: 10px;
     border-left: 5px solid #151565;
     text-shadow: 1px 1px 2px #151565;
@@ -67,19 +69,31 @@ body {
 }
 
 .tool {
-    display: flex;
+    display: flex !important;
+    margin-left: 0;
+    width: 100%;
+    flex-direction: row !important;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 30px;
-    margin-left: 20px;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .search-box {
     position: relative;
-    width: 300px;
+    width: 100%;
 }
 
 .search-box .search-input {
     width: 100%;
+}
+
+#search-date {
+    width: calc(33.333% - 10px);
+}
+
+#search-category {
+    width: calc(33.333% - 10px);
 }
 
 .search-icon {
@@ -91,12 +105,12 @@ body {
 }
 
 .search-input {
-    width: 200px;
     height: 45px;
     padding-left: 45px;
     border-radius: 15px;
     border: 1px solid #151565;
     font-size: 18px;
+    width: 100%;
 }
 
 .search-input:hover {
@@ -121,10 +135,8 @@ body {
     color: #151565;
     font-size: 16px;
     cursor: pointer;
-    width: 200px;
-    /* Added width */
+    width: calc(33.333% - 10px);
     appearance: none;
-    /* For custom select arrow */
     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23151565%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
     background-repeat: no-repeat;
     background-position: right 15px top 50%;
@@ -133,8 +145,7 @@ body {
 }
 
 #sort-opt:hover {
-    box-shadow:
-        inset 0 1px 4px #0000001a;
+    box-shadow: inset 0 1px 4px #0000001a;
 }
 
 #sort-opt option {
@@ -153,10 +164,12 @@ body {
 .history-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 16px;
     border-radius: 12px;
     background: white;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 
@@ -180,10 +193,12 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ebebff;
-    padding: 20px;
-    width: 500px;
     border-radius: 8px;
     z-index: 11;
+    width: 95%;
+    padding: 15px;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 #transactionForm {
@@ -225,12 +240,12 @@ label {
 
 .type-opt {
     display: flex;
-    width: 70%;
     padding: 0;
     height: 50px;
     border-radius: 10px;
     border: none;
     background-color: white;
+    width: 100%;
 }
 
 .type-opt input[type="radio"] {
@@ -257,12 +272,12 @@ label {
     background-color: #6e6ee1;
     font-family: Inter;
     color: #ffffff;
-    width: 200px;
     height: 50px;
     text-align: center;
     font-size: 19px;
     font-weight: bold;
     border-radius: 10px;
+    width: 100%;
 }
 
 .type-opt input:not(:checked)+label {
@@ -278,22 +293,24 @@ label {
 }
 
 .money {
-    width: 75%;
+    width: 100%;
 }
 
 .choose {
     display: flex;
-    width: 75%;
-    height: 80px;
     justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
 }
 
 .date {
-    width: 49%;
+    width: 100%;
 }
 
 .category {
-    width: 49%;
+    width: 100%;
 }
 
 #opt-category {
@@ -305,15 +322,15 @@ label {
 }
 
 .note {
-    width: 75%;
+    width: 100%;
 }
 
 .bttn {
     display: flex;
     justify-content: space-around;
-    width: 75%;
     height: 50px;
     gap: 10px;
+    width: 100%;
 }
 
 #transactionForm button {
@@ -494,4 +511,82 @@ label {
 #confirm-deletion .delete-option button:last-child:hover {
     background: #d02a42;
     box-shadow: inset 0 2px 4px #0000001a;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (min-width: 768px) {
+    .transaction {
+        padding: 24px;
+        margin-bottom: 0;
+        width: calc(100% - var(--sidebar-width));
+    }
+    .transaction-header .title {
+        font-size: 60px;
+    }
+    .tool {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: flex-start;
+    }
+    .search-box {
+        width: 300px;
+    }
+    .search-input {
+        width: 200px;
+    }
+    #sort-opt {
+        width: 200px;
+    }
+
+    #search-date, #search-category {
+        width: auto;
+    }
+    
+    /* Form Popup Responsive */
+    #formPopup {
+        width: 500px;
+        padding: 20px;
+        max-height: none;
+        overflow-y: visible;
+    }
+    .type-opt {
+        width: 70%;
+    }
+    .money, .choose, .note, .bttn {
+        width: 75%;
+    }
+    .choose {
+        flex-direction: row;
+        height: 80px;
+        gap: 0;
+    }
+    .date, .category {
+        width: 49%;
+    }
+    #thu:checked+label, #chi:checked+label {
+        width: 200px;
+    }
+    
+    /* History List responsive */
+    .history-item {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .transaction-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .tool {
+        margin-left: 20px;
+        width: auto;
+        justify-content: flex-start;
+    }
+    
+
 }

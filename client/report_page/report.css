@@ -14,13 +14,14 @@ body {
 .header {
     font-family: Montserrat;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
 }
 
 .title>h1 {
     color: #6e6ee1;
-    font-size: 50px;
+    font-size: 36px;
     padding-left: 10px;
     margin-bottom: 0;
     border-left: 5px solid #151565;
@@ -61,7 +62,8 @@ body {
 
 .report {
     margin-left: var(--sidebar-width);
-    padding: 24px;
+    padding: 15px;
+    margin-bottom: 70px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -80,13 +82,14 @@ div.card {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 div.card>div {
-    padding: 0 20px;
+    padding: 20px;
     border-radius: 10px;
-    height: 10em;
+    height: auto;
     width: 100%;
     background-color: #fff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -98,7 +101,7 @@ div.card>div:hover {
 }
 
 p.title-card {
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -134,7 +137,7 @@ span.icon {
 
 p.value-card {
     margin: 0;
-    font-size: 35px;
+    font-size: 28px;
     font-family: Montserrat;
     font-weight: bolder;
     padding-left: 10px;
@@ -162,14 +165,14 @@ p.danhmuc {
 /*Định dạng biểu đồ*/
 .chart-section {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
 }
 
 .trend-card, .allocation-card {
     background-color: #fff;
     border-radius: 10px;
-    padding: 24px;
+    padding: 15px;
     box-shadow: rgba(99, 99, 99, 0.1) 0px 4px 12px 0px;
     display: flex;
     flex-direction: column;
@@ -261,7 +264,7 @@ p.danhmuc {
 .transaction-table-card {
     background-color: #fff;
     border-radius: 10px;
-    padding: 24px;
+    padding: 15px;
     box-shadow: rgba(99, 99, 99, 0.1) 0px 4px 12px 0px;
     display: flex;
     flex-direction: column;
@@ -281,25 +284,28 @@ p.danhmuc {
     font-weight: 600;
 }
 
+/* Responsive Table - Enable horizontal scrolling by default */
 .transaction-table {
     width: 100%;
     margin-bottom: 20px;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
 }
 
 .table-header {
     display: grid;
-    /* grid-template-columns: 1.5fr 2fr 1.5fr 1fr; */
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 15px 0;
     border-bottom: 1px solid #f0f0f0;
     color: #444;
     font-size: 14px;
     font-weight: 500;
+    min-width: 600px;
 }
 
 .table-row {
     display: grid;
-    /* grid-template-columns: 1.5fr 2fr 1.5fr 1fr; */
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 20px 0;
     border-bottom: 1px solid #f9f9f9;
@@ -307,6 +313,7 @@ p.danhmuc {
     font-size: 14px;
     color: #444;
     transition: background-color 0.2s;
+    min-width: 600px;
 }
 
 .table-row:hover {
@@ -363,4 +370,57 @@ p.danhmuc {
     display: flex;
     justify-content: center;
     padding-top: 10px;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (min-width: 768px) {
+    .report {
+        padding: 24px;
+        margin-bottom: 0;
+    }
+    .header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .title > h1 {
+        font-size: 50px;
+    }
+    div.card {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    div.card > div {
+        height: 10em;
+        padding: 0 20px;
+    }
+    p.title-card {
+        font-size: 18px;
+    }
+    p.value-card {
+        font-size: 35px;
+    }
+    .trend-card, .allocation-card, .transaction-table-card {
+        padding: 24px;
+    }
+    
+    /* Reset Table */
+    .transaction-table {
+        overflow-x: visible;
+        display: table;
+        white-space: normal;
+    }
+    .table-header, .table-row {
+        min-width: 0;   
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .chart-section {
+        grid-template-columns: 1fr 1fr;
+    }
+    div.card {
+        flex-wrap: nowrap;
+    }
 }

@@ -9,7 +9,7 @@ body {
     color: #6e6ee1;
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 16px;
     font-family: Inter, sans-serif;
 }
 
@@ -20,7 +20,8 @@ body {
 
 .overview {
     margin-left: var(--sidebar-width);
-    padding: 24px;
+    padding: 15px;
+    margin-bottom: 70px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -29,7 +30,7 @@ body {
 .content {
     display: grid;
     grid-template-rows: auto auto auto;
-    grid-gap: 2rem;
+    grid-gap: 1.5rem;
 }
 
 /*Định dạng thẻ card*/
@@ -38,13 +39,14 @@ div.card {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 div.card>div {
-    padding: 0 20px;
+    padding: 20px;
     border-radius: 10px;
-    height: 10em;
+    height: auto;
     width: 100%;
     background-color: #fff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -56,7 +58,7 @@ div.card>div:hover {
 }
 
 p.title-card {
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -86,7 +88,7 @@ span.icon {
 }
 
 p.value-card {
-    font-size: 35px;
+    font-size: 28px;
     font-family: Montserrat;
     font-weight: bolder;
     padding-left: 10px;
@@ -98,6 +100,7 @@ div.chart {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     gap: 2rem;
 }
 
@@ -105,11 +108,13 @@ div.chart>div {
     position: relative;
     /*Chart.js responsive*/
     border-radius: 10px;
-    height: 25em;
+    height: auto;
+    min-height: 300px;
     width: 100%;
     background-color: #fff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transition: transform 0.3s;
+    padding: 10px;
 }
 
 div.chart>div:hover {
@@ -121,7 +126,7 @@ div.chart>div:hover {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
     background-color: #fff;
-    padding: 0 1rem 1rem;
+    padding: 0 0.5rem 1rem;
 }
 
 .history-list {
@@ -135,6 +140,9 @@ div.chart>div:hover {
 .history-item {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
     padding: 16px;
     border-radius: 12px;
     background: white;
@@ -173,4 +181,53 @@ div.chart>div:hover {
     box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
         0 0.0525em 0 0 #ececec, 0 0.125em 0 0 #e0e0e0, 0 0.125em 0 0 #dedede,
         0 0.2em 0 0 #dcdcdc, 0 0.225em 0 0 #cacaca, 0 0.225em 0.375em 0 #cecece;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+    .overview {
+        padding: 24px;
+        margin-bottom: 0;
+    }
+    .content {
+        grid-gap: 2rem;
+    }
+    div.card {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    div.card > div {
+        height: 10em;
+        padding: 0 20px;
+    }
+    p.title-card {
+        font-size: 20px;
+    }
+    p.value-card {
+        font-size: 35px;
+    }
+    .recent-transaction {
+        padding: 0 1rem 1rem;
+    }
+    .history-item {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    div.card {
+        flex-wrap: nowrap;
+    }
+    div.chart {
+        flex-direction: row;
+    }
+    div.chart > div {
+        height: 25em;
+        padding: 0;
+    }
 }
