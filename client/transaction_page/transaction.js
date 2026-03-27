@@ -4,6 +4,12 @@ const overlay = document.getElementById("overlay");
 const formPopup = document.getElementById("formPopup");
 const transactionForm = document.getElementById("transactionForm");
 
+// Ẩn tất cả modal khi tải trang (tránh CSS ID selector ghi đè class hidden)
+if (overlay) overlay.style.display = 'none';
+if (formPopup) formPopup.style.display = 'none';
+
+
+
 function setTodayDate() {
     const today = new Date().toISOString().split('T')[0];
     document.getElementById("input-date").value = today;
@@ -12,8 +18,8 @@ function setTodayDate() {
 let editTransactionId = null;
 
 btn.onclick = function () {
-    overlay.classList.remove("hidden");
-    formPopup.classList.remove("hidden");
+    overlay.style.display = 'flex';
+    formPopup.style.display = 'flex';
     document.querySelector('.add-title').textContent = "Thêm giao dịch mới";
     setTodayDate();
 };
@@ -28,8 +34,8 @@ window.editTransaction = function (t) {
     document.getElementById('opt-category').value = t.category;
     document.getElementById('input-note').value = t.note || '';
 
-    overlay.classList.remove("hidden");
-    formPopup.classList.remove("hidden");
+    overlay.style.display = 'flex';
+    formPopup.style.display = 'flex';
 };
 
 let currentDeleteId = null;
@@ -135,8 +141,8 @@ typeRadios.forEach(radio => {
 updateCategories(document.querySelector('input[name="type"]:checked').value);
 
 function closeForm() {
-    overlay.classList.add("hidden");
-    formPopup.classList.add("hidden");
+    overlay.style.display = 'none';
+    formPopup.style.display = 'none';
     transactionForm.reset();
     editTransactionId = null;
     document.querySelector('.add-title').textContent = "Thêm giao dịch mới";
@@ -359,3 +365,167 @@ if (sortOptObj) sortOptObj.addEventListener('change', loadTransactions);
 
 // Gọi tin khi trang tải xong
 loadTransactions();
+
+// ─── AI Form: Nhập ghi chú bằng AI ──────────────────────────────────────────
+
+const aiOverlay = document.getElementById('ai-overlay');
+const aiNoteInput = document.getElementById('ai-note-input');
+const aiError = document.getElementById('ai-error');
+const aiParseBtn = document.getElementById('ai-parse-btn');
+const aiBtnText = document.getElementById('ai-btn-text');
+const aiBtnLoading = document.getElementById('ai-btn-loading');
+
+// Map type AI → radio value của form
+const AI_TYPE_MAP = {
+    income: 'thu',
+    expense: 'chi'
+};
+
+// Map category AI → option value category của form
+const AI_CATEGORY_MAP = {
+    // Thu nhập
+    salary: 'salary', lương: 'salary',
+    bonus: 'bonus', thưởng: 'bonus',
+    interest: 'interest', 'lãi suất': 'interest',
+    sale: 'sale', 'bán đồ': 'sale',
+    other_thu: 'other_thu',
+    // Chi tiêu
+    food: 'food', 'ăn uống': 'food',
+    movement: 'movement', 'di chuyển': 'movement',
+    house: 'house', 'nhà cửa': 'house',
+    shopping: 'shopping', 'mua sắm': 'shopping',
+    entertainment: 'entertainment', 'giải trí': 'entertainment',
+    health: 'health', 'sức khỏe': 'health',
+    education: 'education', 'giáo dục': 'education',
+    gift: 'gift', 'quà tặng': 'gift',
+    other_chi: 'other_chi'
+};
+
+function openAIForm() {
+    aiOverlay.style.display = 'flex';
+    aiNoteInput.value = '';
+    showAIError('');
+    aiError.style.display = 'none';
+    setTimeout(() => aiNoteInput.focus(), 60);
+}
+
+function closeAIForm() {
+    aiOverlay.style.display = 'none';
+}
+
+// Đảm bảo ẩn khi tải trang
+if (aiOverlay) aiOverlay.style.display = 'none';
+
+function useExample(btn) {
+    aiNoteInput.value = btn.textContent;
+    aiNoteInput.focus();
+}
+
+async function parseWithAI() {
+    const note = aiNoteInput.value.trim();
+    if (!note) {
+        showAIError('Vui lòng nhập ghi chú giao dịch!');
+        aiNoteInput.focus();
+        return;
+    }
+
+    // Bật loading
+    setAILoading(true);
+    aiError.classList.add('hidden');
+
+    try {
+        const response = await fetch('http://localhost:3000/api/ai/parse-transaction-note', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ note })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            showAIError(data.message || 'AI không thể phân tích ghi chú này. Hãy thử cách diễn đạt khác.');
+            return;
+        }
+
+        // Điền dữ liệu vào form thủ công
+        const formType = AI_TYPE_MAP[data.type] || 'chi';
+        const formCategory = AI_CATEGORY_MAP[data.category] || '';
+
+        // Chọn đúng radio type
+        const typeRadio = document.querySelector(`input[name="type"][value="${formType}"]`);
+        if (typeRadio) {
+            typeRadio.checked = true;
+            updateCategories(formType);
+        }
+
+        // Điền số tiền
+        if (data.amount) {
+            document.getElementById('amount').value = data.amount;
+        }
+
+        // Điền ngày
+        if (data.date) {
+            document.getElementById('input-date').value = data.date;
+        }
+
+        // Điền danh mục (sau khi updateCategories đã render options)
+        setTimeout(() => {
+            const catSelect = document.getElementById('opt-category');
+            if (catSelect && formCategory) {
+                catSelect.value = formCategory;
+            }
+        }, 50);
+
+        // Điền ghi chú gốc
+        document.getElementById('input-note').value = note;
+
+        // Đóng AI modal
+        closeAIForm();
+
+        // Mở form thủ công với dữ liệu đã điền sẵn
+        document.querySelector('.add-title').textContent = 'Thêm giao dịch mới';
+        overlay.style.display = 'flex';
+        formPopup.style.display = 'flex';
+
+    } catch (err) {
+        console.error('AI parse error:', err);
+        showAIError('Không kết nối được server. Hãy kiểm tra server đang chạy.');
+    } finally {
+        setAILoading(false);
+    }
+}
+
+function setAILoading(isLoading) {
+    aiParseBtn.disabled = isLoading;
+    if (isLoading) {
+        aiBtnText.classList.add('hidden');
+        aiBtnLoading.classList.remove('hidden');
+    } else {
+        aiBtnText.classList.remove('hidden');
+        aiBtnLoading.classList.add('hidden');
+    }
+}
+
+function showAIError(msg) {
+    if (!msg) {
+        aiError.style.display = 'none';
+        aiError.textContent = '';
+        return;
+    }
+    aiError.textContent = msg;
+    aiError.style.display = 'block';
+}
+
+// Cho phép nhấn Enter (Ctrl+Enter hoặc Shift+Enter = xuống dòng, Enter = parse)
+aiNoteInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && !e.ctrlKey) {
+        e.preventDefault();
+        parseWithAI();
+    }
+});
+
+// Expose functions toàn cục
+window.openAIForm = openAIForm;
+window.closeAIForm = closeAIForm;
+window.useExample = useExample;
+window.parseWithAI = parseWithAI;

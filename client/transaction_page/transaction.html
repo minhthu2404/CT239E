@@ -39,12 +39,54 @@
     <div class="transaction">
         <div class="transaction-header">
             <h1 class="title">GIAO DỊCH</h1>
-            <button type="button" id="addBtn" class="add-btn" onclick="openForm('add')">
-                <svg width="20" height="20" viewBox="0 0 24 24">
-                    <path d="M12 5v14M5 12h14" stroke="white" stroke-width="7" stroke-linecap="round" />
-                </svg>
-                <span class="add-text">Thêm giao dịch</span>
-            </button>
+            <div class="header-actions">
+                <button type="button" id="addBtn" class="add-btn" onclick="openForm('add')">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M12 5v14M5 12h14" stroke="white" stroke-width="7" stroke-linecap="round" />
+                    </svg>
+                    <span class="add-text">Thêm giao dịch</span>
+                </button>
+                <button type="button" id="aiBtn" class="ai-btn" onclick="openAIForm()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L13.8 8.2L20 10L13.8 11.8L12 18L10.2 11.8L4 10L10.2 8.2L12 2Z" fill="currentColor"/>
+                        <path d="M19 15L19.9 17.6L22.5 18.5L19.9 19.4L19 22L18.1 19.4L15.5 18.5L18.1 17.6L19 15Z" fill="currentColor"/>
+                        <path d="M5 3L5.7 5L7.5 5.7L5.7 6.4L5 8.4L4.3 6.4L2.5 5.7L4.3 5L5 3Z" fill="currentColor"/>
+                    </svg>
+                    <span>Nhập bằng AI</span>
+                </button>
+            </div>
+            <!-- Modal nhập ghi chú AI -->
+            <div id="ai-overlay" class="hidden" onclick="closeAIForm()">
+                <div id="ai-modal" onclick="event.stopPropagation()">
+                    <div class="ai-modal-header">
+                        <div class="ai-modal-title">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L13.8 8.2L20 10L13.8 11.8L12 18L10.2 11.8L4 10L10.2 8.2L12 2Z" fill="currentColor"/>
+                                <path d="M19 15L19.9 17.6L22.5 18.5L19.9 19.4L19 22L18.1 19.4L15.5 18.5L18.1 17.6L19 15Z" fill="currentColor"/>
+                            </svg>
+                            <span>Nhập ghi chú bằng AI</span>
+                        </div>
+                        <button class="ai-close-btn" onclick="closeAIForm()">&#x2715;</button>
+                    </div>
+                    <p class="ai-hint">Nhập mô tả giao dịch bằng ngôn ngữ tự nhiên. AI sẽ tự phân tích và điền vào form cho bạn.</p>
+                    <div class="ai-examples">
+                        <span>Ví dụ:</span>
+                        <button class="ai-example-chip" onclick="useExample(this)">Hôm nay mua trà sữa 45k</button>
+                        <button class="ai-example-chip" onclick="useExample(this)">Lương tháng 3 là 8 triệu</button>
+                        <button class="ai-example-chip" onclick="useExample(this)">Đổ xăng 150k ngày 20/03</button>
+                    </div>
+                    <textarea id="ai-note-input" placeholder="VD: hôm nay mua cơm 35k, đổ xăng 80k ngày 25/3..." rows="3"></textarea>
+                    <div id="ai-error" class="ai-error hidden"></div>
+                    <div class="ai-modal-footer">
+                        <button type="button" class="ai-cancel-btn" onclick="closeAIForm()">Hủy</button>
+                        <button type="button" id="ai-parse-btn" class="ai-parse-btn" onclick="parseWithAI()">
+                            <span id="ai-btn-text">✨ Phân tích</span>
+                            <span id="ai-btn-loading" class="hidden">Đang phân tích...</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div id="overlay" class="hidden" onclick="closeForm()">
                 <div id="formPopup" class="add_transaction" onclick="event.stopPropagation()">
                     <form id="transactionForm">

@@ -22,6 +22,7 @@ const authRoutes = require('./routes/authRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 const budgetRoutes = require('./routes/budgetRoutes');
 const chatRoutes = require('./routes/chatRoutes');
+const aiRoutes = require('./routes/aiTransactionRoutes');
 
 // Mount routes
 // Auth routes cover /api/register, /api/login, /api/user/:username
@@ -29,6 +30,7 @@ app.use('/api', authRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/budgets', budgetRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Khởi động server
 app.listen(PORT, () => {
