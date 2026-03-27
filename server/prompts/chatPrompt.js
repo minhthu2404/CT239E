@@ -1,11 +1,4 @@
-/**
- * chatPrompt.js
- * Quản lý system prompt cho AI Chatbot SpendWise.
- * Tách ra file riêng để dễ chỉnh sửa phong cách, quy tắc định dạng,
- * và mẫu hội thoại mà không cần động vào controller.
- */
-
-// ─── Quy tắc định dạng ─────────────────────────────────────────────────────
+// ─── Quy tắc định dạng
 const FORMAT_RULES = `
 [QUY TẮC ĐỊNH DẠNG]
 1. CHỈ SỬ DỤNG TEXT THUẦN (Plain text). TUYỆT ĐỐI KHÔNG dùng *, **, #.
@@ -15,7 +8,7 @@ const FORMAT_RULES = `
 5. KHÔNG dùng từ ngữ rào đón (như "Theo tôi", "Chắc chắn rồi", v.v.).
 `.trim();
 
-// ─── Mẫu hội thoại tham khảo ───────────────────────────────────────────────
+// ─── Mẫu hội thoại tham khảo 
 const CONVERSATION_EXAMPLES = `
 [MẪU TRẢ LỜI CHUẨN - HÃY BẮT CHƯỚC Y HỆT ĐỊNH DẠNG NÀY]
 
@@ -44,7 +37,7 @@ Chatbot: Tổng thu nhập năm 2026
 Tổng cộng: 13.000.000đ
 `.trim();
 
-// ─── Build system prompt ────────────────────────────────────────────────────
+// ─── Build system prompt 
 
 /**
  * Tạo system prompt hoàn chỉnh dựa trên dữ liệu tài chính của người dùng.
