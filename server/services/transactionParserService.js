@@ -22,11 +22,20 @@ Quy tắc:
 - type chỉ được là "income" hoặc "expense".
 - category chỉ được là một trong các giá trị:
   "food", "movement", "shopping", "entertainment", "health", "education", "house", "gift", "income"
-- amount phải là số nguyên.
+- amount phải là số nguyên dương.
 - date phải theo định dạng YYYY-MM-DD.
 - Nếu ghi chú là tiền lương, thưởng, tiền nhận được -> type = "income", category = "income".
 - Nếu ghi chú là mua đồ ăn, nước, cơm, bánh, cà phê -> category = "food".
 - Nếu không thấy ngày cụ thể thì dùng ngày hôm nay là ${getTodayString()}.
+
+Cách đọc số tiền viết tắt tiếng Việt:
+- "k" hoặc "nghìn" = × 1.000  (25k = 25.000)
+- "tr" hoặc "triệu" = × 1.000.000  (2tr = 2.000.000)
+- Số ghép: <số><đơn vị><chữ số lẻ>:
+  3tr8  = 3.800.000  (KHÔNG phải 38.000.000)
+  1tr5  = 1.500.000
+  5tr50 = 5.500.000
+  2k5   = 2.500
 
 Ví dụ:
 Input: hôm nay mua nước 10k
@@ -40,6 +49,14 @@ Output:
 Input: mua áo 250k ngày 20/03/2026
 Output:
 {"type":"expense","category":"shopping","amount":250000,"date":"2026-03-20"}
+
+Input: mua đồ 3tr8
+Output:
+{"type":"expense","category":"shopping","amount":3800000,"date":"${getTodayString()}"}
+
+Input: ăn tối 1tr2 hôm nay
+Output:
+{"type":"expense","category":"food","amount":1200000,"date":"${getTodayString()}"}
 `;
 
     const userPrompt = `Ghi chú: ${note}`;

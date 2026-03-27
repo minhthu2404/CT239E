@@ -1,3 +1,5 @@
+const { callOllama } = require('./ollamaService');
+
 // ─── Quy tắc định dạng
 const FORMAT_RULES = `
 [QUY TẮC ĐỊNH DẠNG]
@@ -8,7 +10,7 @@ const FORMAT_RULES = `
 5. KHÔNG dùng từ ngữ rào đón (như "Theo tôi", "Chắc chắn rồi", v.v.).
 `.trim();
 
-// ─── Mẫu hội thoại tham khảo 
+// ─── Mẫu hội thoại tham khảo
 const CONVERSATION_EXAMPLES = `
 [MẪU TRẢ LỜI CHUẨN - HÃY BẮT CHƯỚC Y HỆT ĐỊNH DẠNG NÀY]
 
@@ -37,12 +39,10 @@ Chatbot: Tổng thu nhập năm 2026
 Tổng cộng: 13.000.000đ
 `.trim();
 
-// ─── Build system prompt 
-
 /**
  * Tạo system prompt hoàn chỉnh dựa trên dữ liệu tài chính của người dùng.
  * @param {string} context - Chuỗi dữ liệu ngân sách và giao dịch của người dùng.
- * @returns {string} System prompt sẵn sàng gửi đến Ollama.
+ * @returns {string} System prompt sẵn sàng gửi đến AI.
  */
 function buildChatSystemPrompt(context) {
     return `Bạn là trợ lý tài chính của ứng dụng SpendWise. Phong cách: thân thiện, gọn gàng, ấm áp.
@@ -57,4 +57,18 @@ ${context || 'Người dùng chưa có dữ liệu giao dịch hoặc ngân sác
 Dựa vào dữ liệu trên và ĐÚNG định dạng mẫu, hãy trả lời câu hỏi sau của người dùng.`;
 }
 
-module.exports = { buildChatSystemPrompt };
+/**
+ * Gọi AI chat với ngữ cảnh tài chính của người dùng.
+ * @param {string} userPrompt - Câu hỏi của người dùng.
+ * @param {string} context - Dữ liệu tài chính đã được định dạng.
+ * @returns {Promise<string>} Câu trả lời từ AI.
+ */
+async function callChatAI(userPrompt, context) {
+    const systemPrompt = buildChatSystemPrompt(context);
+    return await callOllama([
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userPrompt }
+    ]);
+}
+
+module.exports = { callChatAI };
