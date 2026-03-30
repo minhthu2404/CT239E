@@ -1,6 +1,12 @@
 SpendWise - Hệ thống Quản lý chi tiêu cá nhân
 Niên luận cơ sở ngành - CT239E
 
+GV Hướng dẫn: TS. Hồ Quan Thái
+
+Nhóm thực hiện:
+Nguyễn Kim Yến B2303860
+Trần Minh Thư B2303851
+
 Giới thiệu
 SpendWise là một ứng dụng Web hỗ trợ quản lý chi tiêu cá nhân, giúp người dùng theo dõi thu nhập, chi tiêu, thiết lập ngân sách và phân tích tài chính một cách trực quan.
     Điểm nổi bật của hệ thống là tích hợp Trí tuệ nhân tạo (AI) nhằm:

@@ -356,18 +356,18 @@ label {
     box-shadow: inset 0 2px 4px #0000001a;
 }
 
-.bttn button:first-child {
+#transactionForm .bttn button:first-child {
     background: #ffffff;
     color: #08083c;
     border: 1px solid #08083c;
     width: 40%;
 }
 
-.bttn button:first-child:hover {
+#transactionForm .bttn button:first-child:hover {
     background: #e6e6f2;
 }
 
-.bttn button:last-child:hover {
+#transactionForm .bttn button:last-child:hover {
     background: #141494;
 }
 
