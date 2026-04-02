@@ -4,6 +4,9 @@ const overlay = document.getElementById("overlay");
 const formPopup = document.getElementById("formPopup");
 const transactionForm = document.getElementById("transactionForm");
 
+let currentPage = 1;
+const itemsPerPage = 8;
+
 // Ẩn tất cả modal khi tải trang (tránh CSS ID selector ghi đè class hidden)
 if (overlay) overlay.style.display = 'none';
 if (formPopup) formPopup.style.display = 'none';
@@ -283,12 +286,23 @@ async function loadTransactions() {
         const list = document.getElementById('history-list');
         list.innerHTML = '';
 
-        if (transactions.length === 0) {
+        const totalItems = transactions.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+        if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        if (totalItems === 0) {
             list.innerHTML = 'Chưa có giao dịch nào';
+            renderPagination(0);
             return;
         }
 
-        transactions.forEach(t => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentTransactions = transactions.slice(startIndex, endIndex);
+
+        currentTransactions.forEach(t => {
             const item = document.createElement('div');
             item.className = 'history-item';
 
@@ -341,6 +355,8 @@ async function loadTransactions() {
             list.appendChild(item);
         });
 
+        renderPagination(totalPages);
+
     } catch (t) {
         console.error('Error loading transactions:', t);
     }
@@ -350,18 +366,75 @@ async function loadTransactions() {
 const searchNoteObj = document.getElementById('search-note');
 if (searchNoteObj) {
     searchNoteObj.addEventListener('input', () => {
+        currentPage = 1;
         clearTimeout(window.searchTimeout);
         window.searchTimeout = setTimeout(loadTransactions, 300);
     });
 }
 const searchDateObj = document.getElementById('search-date');
-if (searchDateObj) searchDateObj.addEventListener('change', loadTransactions);
+if (searchDateObj) searchDateObj.addEventListener('change', () => { currentPage = 1; loadTransactions(); });
 
 const searchCategoryObj = document.getElementById('search-category');
-if (searchCategoryObj) searchCategoryObj.addEventListener('change', loadTransactions);
+if (searchCategoryObj) searchCategoryObj.addEventListener('change', () => { currentPage = 1; loadTransactions(); });
 
 const sortOptObj = document.getElementById('sort-opt');
-if (sortOptObj) sortOptObj.addEventListener('change', loadTransactions);
+if (sortOptObj) sortOptObj.addEventListener('change', () => { currentPage = 1; loadTransactions(); });
+
+function renderPagination(totalPages) {
+    const paginationContainer = document.getElementById('pagination');
+    if (!paginationContainer) return;
+    
+    paginationContainer.innerHTML = '';
+    
+    if (totalPages <= 1) return;
+
+    const prevBtn = document.createElement('button');
+    prevBtn.innerHTML = '<i class="fa-solid fa-angle-left"></i>';
+    prevBtn.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = () => {
+        if (currentPage > 1) {
+            currentPage--;
+            loadTransactions();
+        }
+    };
+    paginationContainer.appendChild(prevBtn);
+
+    for (let i = 1; i <= totalPages; i++) {
+        if (totalPages > 5) {
+            if (i !== 1 && i !== totalPages && (i < currentPage - 1 || i > currentPage + 1)) {
+                if (i === currentPage - 2 || i === currentPage + 2) {
+                    const dots = document.createElement('span');
+                    dots.className = 'page-dots';
+                    dots.textContent = '...';
+                    paginationContainer.appendChild(dots);
+                }
+                continue;
+            }
+        }
+        
+        const pageBtn = document.createElement('button');
+        pageBtn.textContent = i;
+        pageBtn.className = 'page-btn' + (currentPage === i ? ' active' : '');
+        pageBtn.onclick = () => {
+            currentPage = i;
+            loadTransactions();
+        };
+        paginationContainer.appendChild(pageBtn);
+    }
+
+    const nextBtn = document.createElement('button');
+    nextBtn.innerHTML = '<i class="fa-solid fa-angle-right"></i>';
+    nextBtn.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.onclick = () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            loadTransactions();
+        }
+    };
+    paginationContainer.appendChild(nextBtn);
+}
 
 // Gọi tin khi trang tải xong
 loadTransactions();
@@ -528,4 +601,4 @@ aiNoteInput.addEventListener('keydown', (e) => {
 window.openAIForm = openAIForm;
 window.closeAIForm = closeAIForm;
 window.useExample = useExample;
-window.parseWithAI = parseWithAI;
+window.parseWithAI = parseWithAI;
