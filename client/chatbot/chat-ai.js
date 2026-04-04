@@ -6,24 +6,53 @@ const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
 const chatMessages = document.getElementById('chat-messages');
 
+let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+
+function saveChatHistory() {
+    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+}
+
 //Bật/Tắt cửa sổ chat
 function toggleChat () {
     chatWindow.classList.toggle('hidden');
+    
+    localStorage.setItem('chatWindowOpen', !chatWindow.classList.contains('hidden'));
+
     if (!chatWindow.classList.contains('hidden')){
         chatInput.focus();
     }
+}
+
+// Khôi phục trạng thái cửa sổ chat
+if (chatWindow && localStorage.getItem('chatWindowOpen') === 'true') {
+    chatWindow.classList.remove('hidden');
 }
 
 chatButton.addEventListener('click', toggleChat);
 closeChatBtn.addEventListener('click', toggleChat);
 
 //Thêm tin nhắn chat
-function appendMessage (text, sender) {
+function appendMessage (text, sender, save = true) {
     const msgDiv = document.createElement('div');
     msgDiv.className = `message ${sender}`;
     msgDiv.textContent = text;
     chatMessages.appendChild(msgDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    if (save && sender !== 'error' && sender !== 'loading') {
+        chatHistory.push({ text, sender });
+        saveChatHistory();
+    }
+}
+
+// Khôi phục lịch sử chat
+function loadChatHistory() {
+    chatHistory.forEach(msg => {
+        appendMessage(msg.text, msg.sender, false);
+    });
+}
+if (chatMessages) {
+    loadChatHistory();
 }
 
 //Xử lý nút submit chat
