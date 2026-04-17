@@ -2,9 +2,22 @@ function normalizeCategory(rawCategory = '', rawType = '') {
     const category = rawCategory.toLowerCase().trim();
     const type = rawType.toLowerCase().trim();
 
-    if (type === 'income') return 'income';
-
     const map = {
+        // Thu nhập
+        salary: 'salary',
+        'lương': 'salary',
+        bonus: 'bonus',
+        'thưởng': 'bonus',
+        interest: 'interest',
+        'lãi suất': 'interest',
+        sale: 'sale',
+        'bán đồ': 'sale',
+        other_thu: 'other_thu',
+        'thu nhập khác': 'other_thu',
+        income: 'other_thu',
+        'thu nhập': 'other_thu',
+
+        // Chi tiêu
         food: 'food',
         'ăn uống': 'food',
         an_uong: 'food',
@@ -19,6 +32,7 @@ function normalizeCategory(rawCategory = '', rawType = '') {
         mua_sam: 'shopping',
 
         entertainment: 'entertainment',
+        entertaiment: 'entertainment',
         'giải trí': 'entertainment',
         giai_tri: 'entertainment',
 
@@ -38,11 +52,15 @@ function normalizeCategory(rawCategory = '', rawType = '') {
         'quà tặng': 'gift',
         qua_tang: 'gift',
 
-        income: 'income',
-        'thu nhập': 'income'
+        other_chi: 'other_chi',
+        'chi tiêu khác': 'other_chi'
     };
 
-    return map[category] || 'food';
+    if (map[category]) {
+        return map[category];
+    }
+
+    return type === 'income' ? 'other_thu' : 'food';
 }
 
 module.exports = { normalizeCategory };

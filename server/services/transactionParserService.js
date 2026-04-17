@@ -20,11 +20,17 @@ Quy tắc:
 - Không thêm giải thích.
 - Không dùng markdown.
 - type chỉ được là "income" hoặc "expense".
-- category chỉ được là một trong các giá trị:
-  "food", "movement", "shopping", "entertainment", "health", "education", "house", "gift", "income"
+- category chỉ được là một trong các giá trị của chi tiêu:
+  "food", "movement", "shopping", "entertaiment", "health", "education", "house", "gift", "other_chi"
+  hoặc thu nhập:
+  "salary", "bonus", "interest", "sale", "other_thu"
 - amount phải là số nguyên dương.
 - date phải theo định dạng YYYY-MM-DD.
-- Nếu ghi chú là tiền lương, thưởng, tiền nhận được -> type = "income", category = "income".
+- Nếu ghi chú liên quan thu nhập: tiền lương, nhận lương -> type = "income", category = "salary".
+- Tiền thưởng -> type = "income", category = "bonus".
+- Tiền lãi -> type = "income", category = "interest".
+- Bán đồ -> type = "income", category = "sale".
+- Thu nhập khác -> type = "income", category = "other_thu".
 - Nếu ghi chú là mua đồ ăn, nước, cơm, bánh, cà phê -> category = "food".
 - Nếu không thấy ngày cụ thể thì dùng ngày hôm nay là ${getTodayString()}.
 
@@ -44,7 +50,7 @@ Output:
 
 Input: lương tháng này 8 triệu
 Output:
-{"type":"income","category":"income","amount":8000000,"date":"${getTodayString()}"}
+{"type":"income","category":"salary","amount":8000000,"date":"${getTodayString()}"}
 
 Input: mua áo 250k ngày 20/03/2026
 Output:
